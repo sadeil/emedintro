@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>eMED Healthcare — Homepage Sketch v1</title>
+<style>
+  :root{
+    --teal:#14A3A0;
+    --teal-dark:#0e7f7d;
+    --navy:#122F55;
+    --ink:#1f2d3d;
+    --muted:#6b7a8c;
+    --line:#dfe6ea;
+    --soft:#f6f9fa;
+    --soft2:#eef6f6;
+    --white:#fff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    color:var(--ink);
+    background:#fff;
+    line-height:1.7;
+  }
+  a{text-decoration:none;color:inherit}
+  .container{width:min(1180px,92%);margin:auto}
+  .topnote{
+    background:#fafcfd;
+    border-bottom:1px solid var(--line);
+    color:#718096;
+    font-size:13px;
+    padding:7px 0;
+    text-align:center;
+  }
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(8px);
+  }
+  .nav{
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .brand{
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:-1px;
+    color:var(--navy);
+  }
+  .brand .e{color:var(--teal)}
+  .navlinks{
+    display:flex;
+    gap:26px;
+    font-size:15px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .navlinks a.active{color:var(--teal);font-weight:700}
+  .actions{display:flex;align-items:center;gap:12px;white-space:nowrap}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:10px;
+    padding:11px 18px;
+    font-weight:700;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--teal);color:#fff}
+  .btn-primary:hover{background:var(--teal-dark)}
+  .btn-outline{border-color:var(--teal);color:var(--teal);background:#fff}
+  .btn-text{color:var(--teal);padding:0}
+  section{padding:68px 0}
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, #eef8f8 0, transparent 34%),
+      linear-gradient(180deg,#fff 0,#fbfdfd 100%);
+    padding:70px 0 54px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:48px;
+    align-items:center;
+  }
+  .eyebrow{color:var(--teal);font-weight:800;font-size:14px;margin-bottom:10px}
+  h1{
+    color:var(--navy);
+    font-size:56px;
+    line-height:1.2;
+    margin:0 0 18px;
+    letter-spacing:-1px;
+  }
+  .hero p{
+    font-size:20px;
+    color:#536174;
+    max-width:720px;
+    margin:0 0 28px;
+  }
+  .searchbox{
+    background:#fff;
+    border:1px solid #cfd9de;
+    border-radius:16px;
+    padding:10px;
+    display:grid;
+    grid-template-columns:1.6fr 1fr auto;
+    gap:10px;
+    box-shadow:0 12px 32px rgba(18,47,85,.08);
+  }
+  .field{
+    border:1px solid var(--line);
+    border-radius:10px;
+    min-height:54px;
+    display:flex;
+    align-items:center;
+    padding:0 16px;
+    color:#8793a1;
+    background:#fff;
+  }
+  .field b{color:#364152;margin-left:6px}
+  .hero-note{
+    margin-top:14px;
+    font-size:14px!important;
+    color:#7a8794!important;
+  }
+  .visual{
+    min-height:370px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .phone{
+    width:220px;height:390px;border:10px solid #2d3748;border-radius:34px;
+    background:#fff;position:relative;box-shadow:0 20px 40px rgba(18,47,85,.13);
+    padding:28px 15px 15px;
+  }
+  .phone:before{
+    content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);
+    width:70px;height:7px;border-radius:8px;background:#2d3748;
+  }
+  .mini-search{height:38px;border:1px solid var(--line);border-radius:8px;margin-bottom:12px}
+  .mini-card{border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:10px;display:flex;gap:10px;align-items:center}
+  .avatar{width:38px;height:38px;border-radius:50%;background:var(--soft2);border:1px solid #cdd}
+  .lines{flex:1}
+  .lines span{display:block;height:6px;background:#e8edf0;border-radius:4px;margin:5px 0}
+  .map-badge{
+    position:absolute;right:0;bottom:28px;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;box-shadow:0 10px 26px rgba(18,47,85,.08);
+    width:180px;
+  }
+  .map-badge strong{display:block;color:var(--navy);margin-bottom:4px}
+  .section-title{text-align:center;margin-bottom:34px}
+  .section-title h2{font-size:34px;line-height:1.3;color:var(--navy);margin:0 0 8px}
+  .section-title p{margin:0;color:var(--muted);font-size:17px}
+  .categories{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:14px;
+  }
+  .cat{
+    border:1px solid var(--line);border-radius:14px;padding:24px 14px;text-align:center;background:#fff;
+  }
+  .icon{
+    width:54px;height:54px;border-radius:14px;margin:0 auto 12px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--soft2);color:var(--teal);font-size:26px;
+  }
+  .cat strong{display:block;color:var(--navy);font-size:16px}
+  .soft{background:var(--soft)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;
+    position:relative;
+  }
+  .num{
+    width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;
+    margin-bottom:14px;
+  }
+  .step h3,.card h3{margin:0 0 8px;color:var(--navy);font-size:21px}
+  .step p,.card p{margin:0;color:var(--muted)}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .card{
+    border:1px solid var(--line);border-radius:16px;padding:28px;background:#fff;
+  }
+  .card ul{margin:14px 0 0;padding:0 20px 0 0;color:#536174}
+  .app{
+    display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:center
+  }
+  .app-visual{
+    min-height:330px;position:relative;display:flex;justify-content:center;align-items:end;
+  }
+  .screen{
+    width:190px;height:320px;border:8px solid #2d3748;border-radius:28px;background:#fff;padding:30px 14px 14px;
+    box-shadow:0 15px 32px rgba(18,47,85,.12)
+  }
+  .screen.second{position:absolute;right:46px;transform:translateY(15px) scale(.92);opacity:.92}
+  .app-copy h2,.providers h2,.org h2{font-size:34px;color:var(--navy);margin:0 0 12px}
+  .app-copy p,.providers p,.org p{font-size:18px;color:#5d6b7b;margin:0 0 22px}
+  .storebuttons{display:flex;gap:12px;flex-wrap:wrap}
+  .store{border:1px solid #bbc5cb;border-radius:10px;padding:10px 18px;background:#fff;font-weight:700}
+  .providers{background:linear-gradient(180deg,#f3fbfb,#fff)}
+  .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}
+  .benefit{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}
+  .benefit strong{display:block;color:var(--navy);margin:6px 0}
+  .orgbox{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:30px;
+    border:1px solid var(--line);border-radius:18px;padding:34px;background:#fff
+  }
+  .building{
+    min-height:190px;border-radius:14px;background:
+      linear-gradient(90deg,transparent 0 18%,#dde6ea 18% 31%,transparent 31% 42%,#e6edef 42% 58%,transparent 58% 68%,#d9e3e6 68% 84%,transparent 84%);
+    position:relative;
+  }
+  .building:after{content:"";position:absolute;left:8%;right:8%;bottom:15px;height:1px;background:#bfcbd1}
+  .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .trust .t{padding:22px;text-align:center}
+  footer{background:#0f2744;color:#e5eef5;padding:46px 0 20px}
+  .footergrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:28px}
+  footer h4{margin:0 0 12px;color:#fff}
+  footer a{display:block;color:#c9d6df;margin:7px 0;font-size:14px}
+  .footbrand{font-size:30px;font-weight:800}
+  .copyright{border-top:1px solid rgba(255,255,255,.14);margin-top:26px;padding-top:18px;text-align:center;color:#aac0cf;font-size:13px}
+  .review-tag{
+    display:inline-block;background:#fff4d6;color:#88600a;border:1px solid #f2d68b;
+    border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700;margin-bottom:12px;
+  }
+  @media(max-width:900px){
+    .navlinks{display:none}
+    .hero-grid,.app,.orgbox{grid-template-columns:1fr}
+    .visual{order:-1}
+    h1{font-size:40px}
+    .categories{grid-template-columns:repeat(3,1fr)}
+    .benefits{grid-template-columns:repeat(2,1fr)}
+    .footergrid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:650px){
+    .searchbox{grid-template-columns:1fr}
+    .categories,.steps,.split,.trust,.benefits{grid-template-columns:1fr}
+    .footergrid{grid-template-columns:1fr}
+    .actions .btn-outline{display:none}
+    h1{font-size:34px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnote">سكاتش مراجعة مبدئي — الهدف مراجعة المحتوى وترتيب الأقسام قبل التصميم النهائي</div>
+
+<header>
+  <div class="container nav">
+    <div class="brand"><span class="e">e</span>MED</div>
+    <nav class="navlinks">
+      <a class="active" href="#">الرئيسية</a>
+      <a href="#find">ابحث عن رعاية</a>
+      <a href="#individuals">للأفراد</a>
+      <a href="#providers">لمقدمي الخدمات</a>
+      <a href="#organizations">للمؤسسات</a>
+      <a href="#about">عن eMED</a>
+    </nav>
+    <div class="actions">
+      <a href="#" class="btn btn-outline">حمّل التطبيق</a>
+      <a href="#" style="font-weight:700;color:#52606f">EN</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="find">
+  <div class="container hero-grid">
+    <div>
+      <div class="review-tag">الموقع العام لمنصة eMED</div>
+      <div class="eyebrow">eMED FOR EVERYONE</div>
+      <h1>الرعاية الصحية للجميع</h1>
+      <p>ابحث عن طبيب أو مؤسسة صحية، تعرّف إلى الخدمات المتاحة، واحصل على الرعاية المناسبة سواء كان لديك تأمين صحي أم لا.</p>
+
+      <div class="searchbox">
+        <div class="field"><b>🔎</b> طبيب، تخصص أو خدمة</div>
+        <div class="field"><b>📍</b> الموقع</div>
+        <a class="btn btn-primary" href="#">بحث</a>
+      </div>
+      <p class="hero-note">يمكن تصفح الموقع دون حساب. الحجز وإدارة المواعيد يتمان عبر تطبيق eMED.</p>
+    </div>
+
+    <div class="visual">
+      <div class="phone">
+        <div class="mini-search"></div>
+        <div class="mini-card"><div class="avatar"></div><div class="lines"><span style="width:70%"></span><span style="width:48%"></span></div></div>
+        <div class="mini-card"><div class="avatar"></div><div class="lines"><span style="width:78%"></span><span style="width:55%"></span></div></div>
+        <div class="mini-card"><div class="avatar"></div><div class="lines"><span style="width:60%"></span><span style="width:42%"></span></div></div>
+      </div>
+      <div class="map-badge"><strong>📍 نتائج قريبة منك</strong><small>عيادات، مستشفيات، مختبرات ومراكز صحية</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>ماذا تبحث عنه؟</h2>
+      <p>ابدأ حسب نوع الرعاية الصحية التي تحتاجها.</p>
+    </div>
+    <div class="categories">
+      <div class="cat"><div class="icon">👨‍⚕️</div><strong>طبيب</strong></div>
+      <div class="cat"><div class="icon">🏥</div><strong>مستشفى</strong></div>
+      <div class="cat"><div class="icon">🏨</div><strong>عيادة أو مركز طبي</strong></div>
+      <div class="cat"><div class="icon">⚕️</div><strong>صيدلية</strong></div>
+      <div class="cat"><div class="icon">🔬</div><strong>مختبر</strong></div>
+      <div class="cat"><div class="icon">🩻</div><strong>مركز أشعة</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="individuals">
+  <div class="container">
+    <div class="section-title">
+      <h2>كيف يساعدك eMED؟</h2>
+      <p>ثلاث خطوات واضحة من البحث إلى الموعد.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>ابحث</h3><p>ابحث بسهولة عن الأطباء والمؤسسات الصحية حسب التخصص، الخدمة والموقع.</p></div>
+      <div class="step"><div class="num">2</div><h3>تعرّف</h3><p>اطّلع على بيانات مقدم الخدمة، الفروع، الأطباء، الخدمات وساعات العمل.</p></div>
+      <div class="step"><div class="num">3</div><h3>احجز عبر التطبيق</h3><p>اختر الموعد المناسب وأكمل الحجز وإدارة مواعيدك من تطبيق eMED.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>الرعاية متاحة للجميع</h2>
+      <p>استخدم eMED سواء كان لديك تأمين صحي أم لا.</p>
+    </div>
+    <div class="split">
+      <div class="card">
+        <div class="icon" style="margin:0 0 12px">🛡️</div>
+        <h3>لدي تأمين صحي</h3>
+        <ul>
+          <li>اربط بيانات تأمينك من تطبيق eMED.</li>
+          <li>تعرّف إلى مقدمي الخدمات المشمولين ضمن شبكتك.</li>
+          <li>استفد من الخدمات التأمينية المتاحة لك.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon" style="margin:0 0 12px">♡</div>
+        <h3>ليس لدي تأمين</h3>
+        <ul>
+          <li>ابحث عن الأطباء والمؤسسات والخدمات الصحية.</li>
+          <li>تعرّف إلى المواعيد والخدمات المتاحة.</li>
+          <li>استخدم eMED دون أن يكون التأمين شرطاً.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="container app">
+    <div class="app-copy">
+      <div class="eyebrow">تطبيق eMED</div>
+      <h2>صحتك معك أينما كنت</h2>
+      <p>استخدم تطبيق eMED لإدارة المواعيد، أفراد العائلة، ربط التأمين، والوصول إلى الخدمات الصحية الرقمية المتاحة.</p>
+      <div class="storebuttons">
+        <div class="store"> App Store</div>
+        <div class="store">▶ Google Play</div>
+      </div>
+    </div>
+    <div class="app-visual">
+      <div class="screen second"><div class="mini-search"></div><div class="mini-card"><div class="avatar"></div><div class="lines"><span></span><span></span></div></div></div>
+      <div class="screen"><div class="mini-search"></div><div class="mini-card"><div class="avatar"></div><div class="lines"><span style="width:80%"></span><span style="width:60%"></span></div></div><div class="mini-card"><div class="avatar"></div><div class="lines"><span style="width:66%"></span><span style="width:45%"></span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="providers" id="providers">
+  <div class="container">
+    <div class="eyebrow">لمقدمي الخدمات الصحية</div>
+    <h2>انضم إلى شبكة eMED الصحية</h2>
+    <p>أنشئ حضوراً رقمياً لمؤسستك، عرّف الجمهور بفروعك وأطبائك وخدماتك، واستقبل طلبات المواعيد من مستخدمي eMED.</p>
+    <div class="benefits">
+      <div class="benefit">🌐<strong>حضور رقمي موثّق</strong><span>ملف واضح للمؤسسة والفروع والخدمات.</span></div>
+      <div class="benefit">👨‍⚕️<strong>إدارة الأطباء والخدمات</strong><span>إضافة الأطباء والتخصصات والخدمات.</span></div>
+      <div class="benefit">🗓️<strong>المواعيد وساعات العمل</strong><span>تحديد الجداول وأوقات الإتاحة.</span></div>
+      <div class="benefit">🤝<strong>ارتباط بمنظومة التأمين</strong><span>عند وجود اتفاقيات مع شركات التأمين.</span></div>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <a class="btn btn-primary" href="#">قدّم طلب الانضمام</a>
+      <a class="btn btn-text" href="#">تعرّف إلى خطوات الانضمام ←</a>
+    </div>
+  </div>
+</section>
+
+<section id="organizations">
+  <div class="container orgbox">
+    <div class="org">
+      <div class="eyebrow">لشركات التأمين والمؤسسات</div>
+      <h2>اربط أعضاءك بشبكة رعاية صحية رقمية</h2>
+      <p>تساعد eMED شركات التأمين والجهات المديرة للمحافظ الصحية على تسهيل وصول الأعضاء إلى مقدمي الخدمات وربط تجربة المستخدم بالعمليات التأمينية المتاحة.</p>
+      <a class="btn btn-outline" href="#">تواصل معنا للشراكة</a>
+    </div>
+    <div class="building"></div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="container">
+    <div class="section-title">
+      <h2>معلومات واضحة ومقدمو خدمات موثّقون</h2>
+      <p>الثقة في البيانات جزء أساسي من تجربة eMED.</p>
+    </div>
+    <div class="trust">
+      <div class="t"><div class="icon">✓</div><strong>مراجعة بيانات مقدمي الخدمات</strong><p>التحقق من البيانات الأساسية قبل النشر.</p></div>
+      <div class="t"><div class="icon">🧭</div><strong>معلومات عملية وواضحة</strong><p>الموقع، الخدمات، الفروع وساعات العمل.</p></div>
+      <div class="t"><div class="icon">🔐</div><strong>احترام الخصوصية</strong><p>استخدام المعلومات وفق سياسات واضحة ومعلنة.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="about">
+  <div class="container">
+    <div class="footergrid">
+      <div>
+        <div class="footbrand"><span style="color:var(--teal)">e</span>MED</div>
+        <p style="color:#c9d6df;max-width:340px">منصة رقمية تساعد الأفراد على اكتشاف الرعاية الصحية والوصول إلى مقدمي الخدمات، مع أو دون تأمين.</p>
+      </div>
+      <div>
+        <h4>للأفراد</h4>
+        <a href="#">ابحث عن رعاية</a>
+        <a href="#">تطبيق eMED</a>
+        <a href="#">الأسئلة الشائعة</a>
+      </div>
+      <div>
+        <h4>لمقدمي الخدمات</h4>
+        <a href="#">لماذا تنضم؟</a>
+        <a href="#">طلب الانضمام</a>
+        <a href="#">بوابة مقدمي الخدمات</a>
+      </div>
+      <div>
+        <h4>قانوني</h4>
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+        <a href="#">تواصل معنا</a>
+      </div>
+    </div>
+    <div class="copyright">منصة eMED مطوّرة ومشغّلة بواسطة Future Information Systems</div>
+  </div>
+</footer>
+
+</body>
+</html>

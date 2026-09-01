@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071B33">
+
+<title>eMED — رعايتك الصحية، كما يجب أن تكون. متّصلة.</title>
+<meta name="description" content="eMED منظومة رعاية صحية متصلة تجمع الأطباء والمستشفيات والعيادات والصيدليات والمختبرات ومراكز الأشعة. اكتشف مقدمي الرعاية، وتابع مواعيدك وأفراد عائلتك وبيانات تأمينك من تطبيق واحد.">
+
+<!-- TODO (deploy): set the production origin below, then uncomment.
+     Absolute URLs are required by most crawlers for canonical and og:url.
+<link rel="canonical" href="https://REPLACE-WITH-PRODUCTION-ORIGIN/">
+<meta property="og:url" content="https://REPLACE-WITH-PRODUCTION-ORIGIN/">
+-->
+<link rel="alternate" hreflang="ar" href="./">
+<link rel="alternate" hreflang="en" href="./?lang=en">
+<link rel="alternate" hreflang="x-default" href="./">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="eMED">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="eMED — رعايتك الصحية، كما يجب أن تكون. متّصلة.">
+<meta property="og:description" content="منظومة رعاية صحية متصلة تجمع الأطباء والمستشفيات والعيادات والصيدليات والمختبرات ومراكز الأشعة في تجربة واحدة.">
+<!-- TODO (deploy): export assets/img/og-image.svg to a 1200x630 PNG and point here. -->
+<meta property="og:image" content="assets/img/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="eMED — رعايتك الصحية، كما يجب أن تكون. متّصلة.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"></noscript>
+
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "eMED",
+  "description": "منظومة رقمية للرعاية الصحية تربط الأفراد ومقدمي الخدمات الصحية في تجربة واحدة.",
+  "logo": "assets/img/emed-logo.svg",
+  "parentOrganization": { "@type": "Organization", "name": "Future Information Systems" }
+}
+</script>
+<!-- Mirrors the visible FAQ on the Arabic (canonical) page. Keep the two in
+     sync: if a question changes in i18n.js, change it here too. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "ar",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "هل أحتاج إلى حساب لاستخدام الموقع؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "لا. تصفّح مقدمي الرعاية والاطّلاع على ملفاتهم وخدماتهم متاح دون حساب. الحجز وإدارة المواعيد وأفراد العائلة وربط التأمين تتم عبر تطبيق eMED."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل استخدام eMED يتطلّب تأميناً صحياً؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "لا. يمكنك اكتشاف مقدمي الرعاية وحجز المواعيد المتاحة دون تأمين. وإذا كان لديك تأمين، يمكنك ربط بياناته لمعرفة مقدمي الخدمات المشمولين ضمن شبكتك."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف أحجز موعداً؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ابحث عن مقدم الرعاية من الموقع أو التطبيق، واطّلع على ملفه وخدماته وأوقات إتاحته، ثم أكمل الحجز من تطبيق eMED وتابع مواعيدك القادمة داخله."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يمكنني إدارة مواعيد أفراد عائلتي؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم. يمكنك إضافة أفراد عائلتك إلى حسابك في التطبيق ومتابعة مواعيدهم ورعايتهم من المكان نفسه."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "أنا مقدم خدمة صحية. كيف أنضم؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "قدّم طلب الانضمام مع بيانات المؤسسة أو العيادة الأساسية. بعد مراجعة البيانات، تدير ملفك وفروعك وأطباءك وخدماتك وأوقات الإتاحة من بوابة مقدمي الخدمات."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف يتم التعامل مع بياناتي؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "تُستخدم المعلومات وفق سياسة الخصوصية وشروط الاستخدام المنشورة على المنصة، ويمكنك مراجعتهما في أي وقت من روابط أسفل الصفحة."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="nav.skip">تخطَّ إلى المحتوى الرئيسي</a>
+
+<!-- ===================================================================== -->
+<!-- Icon system: one inline sprite, referenced with <use>. No emoji.       -->
+<!-- ===================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-5.9 7-11.4a7 7 0 1 0-14 0c0 5.5 7 11.4 7 11.4Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-crosshair" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+  <symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M4.6 3h2.6M12.8 3h2.6"/><path d="M10 12.4V15a5 5 0 0 0 10 0v-1.6"/><circle cx="20" cy="10.6" r="2.2"/></symbol>
+  <symbol id="i-hospital" viewBox="0 0 24 24"><path d="M4 21V9.4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1V21"/><path d="M9 8.4V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3.4"/><path d="M12 12v5M9.5 14.5h5"/><path d="M2.6 21h18.8"/></symbol>
+  <symbol id="i-clinic" viewBox="0 0 24 24"><path d="M3 21V5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v16"/><path d="M12 21V11h8a1 1 0 0 1 1 1v9"/><path d="M2.4 21h19.2"/><path d="M6 8h2M6 12h2M6 16h2M16 15h2"/></symbol>
+  <symbol id="i-pharmacy" viewBox="0 0 24 24"><path d="M9.4 3h5.2a.6.6 0 0 1 .6.6V9h5.4a.6.6 0 0 1 .6.6v4.8a.6.6 0 0 1-.6.6H15.2v5.4a.6.6 0 0 1-.6.6H9.4a.6.6 0 0 1-.6-.6V15H3.4a.6.6 0 0 1-.6-.6V9.6A.6.6 0 0 1 3.4 9h5.4V3.6a.6.6 0 0 1 .6-.6Z"/></symbol>
+  <symbol id="i-lab" viewBox="0 0 24 24"><path d="M9 3h6"/><path d="M10 3v6.3L4.7 18a2 2 0 0 0 1.7 3h11.2a2 2 0 0 0 1.7-3L14 9.3V3"/><path d="M7.6 15.2h8.8"/></symbol>
+  <symbol id="i-imaging" viewBox="0 0 24 24"><path d="M4 8.5V6a2 2 0 0 1 2-2h2.5M15.5 4H18a2 2 0 0 1 2 2v2.5M20 15.5V18a2 2 0 0 1-2 2h-2.5M8.5 20H6a2 2 0 0 1-2-2v-2.5"/><path d="M12 8v8"/><path d="M9.4 10.4c1.6 1 3.6 1 5.2 0M9.4 13.9c1.6-1 3.6-1 5.2 0"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.2" y="5" width="17.6" height="16" rx="2.4"/><path d="M8 3v4M16 3v4M3.2 10h17.6"/><circle cx="12" cy="15" r="1.3" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.6"/><path d="M2.6 20.4a6.4 6.4 0 0 1 12.8 0"/><path d="M15.6 5.2a3.4 3.4 0 0 1 0 6.6M17.2 20.4a6.6 6.6 0 0 0-1.4-4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 19 6v5.5c0 4.6-3 8.3-7 9.6-4-1.3-7-5-7-9.6V6Z"/><path d="m9.2 12.2 2 2 3.8-4"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11 3.5 12.5 8l4.5 1.5L12.5 11 11 15.5 9.5 11 5 9.5 9.5 8Z"/><path d="M18 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15.4 15.4 0 0 1 0 18 15.4 15.4 0 0 1 0-18Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.6 4.6 4.6L19 7.8"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6"/></symbol>
+  <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="6" y="2.2" width="12" height="19.6" rx="3"/><path d="M10.4 18.6h3.2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.4" y="10" width="15.2" height="11" rx="2.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-badge-check" viewBox="0 0 24 24"><path d="m12 2.6 2.3 1.7 2.9-.3 1.1 2.7 2.6 1.3-.8 2.9.8 2.9-2.6 1.3-1.1 2.7-2.9-.3L12 21.4l-2.3-1.9-2.9.3-1.1-2.7-2.6-1.3.8-2.9-.8-2.9L5.7 8.7l1.1-2.7 2.9.3Z"/><path d="m9.4 12.1 1.9 1.9 3.5-3.7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.6"/><circle cx="5" cy="19" r="2.6"/><circle cx="19" cy="19" r="2.6"/><path d="M12 7.6v3.6M11 11.6 6.4 16.6M13 11.6l4.6 5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.6"/><path d="m3.8 6.6 8.2 5.9 8.2-5.9"/></symbol>
+  <symbol id="i-support" viewBox="0 0 24 24"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="2.4" y="12.6" width="4" height="6.4" rx="2"/><rect x="17.6" y="12.6" width="4" height="6.4" rx="2"/><path d="M20 19v.4a2.8 2.8 0 0 1-2.8 2.8h-2.4"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.6 20.6a7.4 7.4 0 0 1 14.8 0"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/><path d="M10 21v-3h4v3"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 4.8-9 4.8-9-4.8Z"/><path d="m3 13 9 4.8 9-4.8"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-8.6 8.6"/><path d="M18 14v4.4A1.6 1.6 0 0 1 16.4 20H5.6A1.6 1.6 0 0 1 4 18.4V7.6A1.6 1.6 0 0 1 5.6 6H10"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.4"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.4"/><rect x="14" y="3" width="7" height="7" rx="1.4"/><rect x="3" y="14" width="7" height="7" rx="1.4"/><path d="M14 14h3.2v3.2H14zM20.6 14v3.4M17.2 20.6h3.4M14 20.6h.01"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.6 12 4l8 6.6V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M9.6 21v-6h4.8v6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.6S3.6 15.2 3.6 9.4A4.8 4.8 0 0 1 12 6.5a4.8 4.8 0 0 1 8.4 2.9c0 5.8-8.4 11.2-8.4 11.2Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8.5 6H21M8.5 12H21M8.5 18H21"/><circle cx="3.8" cy="6" r="1.1" fill="currentColor" stroke="none"/><circle cx="3.8" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="3.8" cy="18" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-status" viewBox="0 0 40 12">
+    <rect x="0" y="7.5" width="2.4" height="3.5" rx="1" fill="currentColor"/>
+    <rect x="3.6" y="5.5" width="2.4" height="5.5" rx="1" fill="currentColor"/>
+    <rect x="7.2" y="3.5" width="2.4" height="7.5" rx="1" fill="currentColor"/>
+    <rect x="10.8" y="1.5" width="2.4" height="9.5" rx="1" fill="currentColor"/>
+    <path d="M17.4 4.6a6.4 6.4 0 0 1 7.6 0M19 7a3.9 3.9 0 0 1 4.4 0" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    <circle cx="21.2" cy="9.6" r="1.2" fill="currentColor"/>
+    <rect x="28" y="2.4" width="10" height="7.2" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <rect x="29.4" y="3.8" width="6.4" height="4.4" rx="1.2" fill="currentColor"/>
+    <path d="M39.2 5.2v3.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.4" y="3.4" width="7.2" height="7.2" rx="1.6"/><rect x="13.4" y="3.4" width="7.2" height="7.2" rx="1.6"/><rect x="3.4" y="13.4" width="7.2" height="7.2" rx="1.6"/><rect x="13.4" y="13.4" width="7.2" height="7.2" rx="1.6"/></symbol>
+</defs></svg>
+
+<!-- ===================================================================== -->
+<!-- Header                                                                 -->
+<!-- ===================================================================== -->
+<header class="site-header" id="siteHeader">
+  <div class="site-header__inner container-wide">
+
+    <a class="logo" href="#top" aria-label="eMED">
+      <img src="assets/img/emed-logo.svg" alt="" width="1756" height="447" aria-hidden="true" fetchpriority="high">
+    </a>
+
+    <nav class="nav" id="primaryNav" aria-label="التنقل الرئيسي" data-i18n-attr="aria-label:nav.primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#top" data-nav="top" data-i18n="nav.home">الرئيسية</a></li>
+        <li><a class="nav__link" href="#discover" data-nav="discover" data-i18n="nav.discover">اكتشف الرعاية</a></li>
+        <li><a class="nav__link" href="#app" data-nav="app" data-i18n="nav.app">تطبيق eMED</a></li>
+        <li><a class="nav__link" href="#providers" data-nav="providers" data-i18n="nav.providers">لمقدمي الخدمات</a></li>
+        <li><a class="nav__link" href="#about" data-nav="about" data-i18n="nav.about">عن eMED</a></li>
+        <li><a class="nav__link" href="#support" data-nav="support" data-i18n="nav.support">الدعم</a></li>
+      </ul>
+      <span class="nav__indicator" aria-hidden="true"></span>
+    </nav>
+
+    <div class="site-header__actions">
+      <button class="lang-toggle" id="langToggle" type="button"
+              aria-label="Switch to English — التبديل إلى الإنجليزية"
+              data-i18n-attr="aria-label:nav.langAria">
+        <svg class="icon" aria-hidden="true"><use href="#i-globe"></use></svg>
+        <span data-i18n="nav.lang">EN</span>
+      </button>
+      <!-- TODO: point at the live provider portal URL. -->
+      <a class="btn btn--ghost btn--sm btn--portal" href="#providers" data-i18n="nav.portal">بوابة مقدمي الخدمات</a>
+      <a class="btn btn--primary btn--sm" href="#app" data-i18n="nav.download">حمّل التطبيق</a>
+      <button class="nav-toggle" id="navToggle" type="button"
+              aria-expanded="false" aria-controls="navDrawer"
+              aria-label="فتح القائمة" data-i18n-attr="aria-label:nav.menu">
+        <svg class="icon icon-menu" aria-hidden="true"><use href="#i-menu"></use></svg>
+        <svg class="icon icon-close" aria-hidden="true"><use href="#i-close"></use></svg>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===================================================================== -->
+<!-- Hero                                                                   -->
+<!-- ===================================================================== -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="hero__arc"></span>
+    <span class="hero__arc hero__arc--b"></span>
+    <span class="hero__arc hero__arc--c"></span>
+  </div>
+  <div class="container-wide">
+    <div class="hero__inner">
+
+      <div class="hero__copy">
+        <p class="eyebrow" data-i18n="hero.eyebrow">منظومة رعاية صحية متصلة</p>
+        <h1 class="display hero__title" id="heroTitle" data-i18n-html="hero.title">رعايتك الصحية، كما يجب أن تكون.<br><span class="accent">متّصلة.</span></h1>
+        <p class="lead hero__lead" data-i18n="hero.lead">أطباؤك، مستشفياتك، صيدلياتك ومختبراتك — تجربة صحية واحدة تجمع كل ما تحتاجه عبر eMED.</p>
+
+        <div class="hero__search">
+          <form class="searchbar" id="heroSearch" role="search" autocomplete="off"
+                aria-label="ابحث عن رعاية صحية" data-i18n-attr="aria-label:hero.searchTitle">
+
+            <div class="searchbar__field searchbar__field--query">
+              <svg class="icon searchbar__icon" aria-hidden="true"><use href="#i-search"></use></svg>
+              <label class="sr-only" for="q" data-i18n="hero.queryLabel">طبيب، تخصص، خدمة أو اسم مقدم خدمة</label>
+              <input class="searchbar__input" id="q" name="q" type="search"
+                     role="combobox" aria-expanded="false" aria-controls="suggestList"
+                     aria-autocomplete="list" aria-describedby="searchStatus"
+                     placeholder="طبيب، تخصص أو خدمة"
+                     data-i18n-attr="placeholder:hero.queryPlaceholder">
+              <kbd class="kbd" aria-hidden="true">/</kbd>
+            </div>
+
+            <div class="searchbar__divider" aria-hidden="true"></div>
+
+            <div class="searchbar__field searchbar__field--location">
+              <svg class="icon searchbar__icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+              <label class="sr-only" for="loc" data-i18n="hero.locLabel">الموقع</label>
+              <input class="searchbar__input" id="loc" name="loc" type="text"
+                     placeholder="المدينة أو المنطقة" data-i18n-attr="placeholder:hero.locPlaceholder">
+              <button class="searchbar__geo" id="geoBtn" type="button"
+                      aria-label="استخدام موقعي الحالي" data-i18n-attr="aria-label:hero.geo">
+                <svg class="icon" aria-hidden="true"><use href="#i-crosshair"></use></svg>
+              </button>
+            </div>
+
+            <button class="btn btn--primary searchbar__submit" type="submit">
+              <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+              <span data-i18n="hero.submit">ابحث</span>
+            </button>
+
+            <div class="suggest" id="suggestBox">
+              <ul id="suggestList" role="listbox" aria-label="نتائج الاقتراحات" data-i18n-attr="aria-label:search.results"></ul>
+            </div>
+          </form>
+          <p class="sr-only" id="searchStatus" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="hero__chips">
+          <span class="hero__chips-label" data-i18n="hero.chipsLabel">بحث سريع</span>
+          <a class="chip" href="#discover"><svg class="icon" aria-hidden="true"><use href="#i-stethoscope"></use></svg><span data-i18n="cat.doctor">طبيب</span></a>
+          <a class="chip" href="#discover"><svg class="icon" aria-hidden="true"><use href="#i-hospital"></use></svg><span data-i18n="cat.hospital">مستشفى</span></a>
+          <a class="chip" href="#discover"><svg class="icon" aria-hidden="true"><use href="#i-pharmacy"></use></svg><span data-i18n="cat.pharmacy">صيدلية</span></a>
+          <a class="chip" href="#discover"><svg class="icon" aria-hidden="true"><use href="#i-lab"></use></svg><span data-i18n="cat.lab">مختبر</span></a>
+        </div>
+
+        <div class="hero__meta">
+          <p class="hero__note">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"></use></svg>
+            <span data-i18n="hero.note">التصفّح متاح دون حساب. الحجز وإدارة المواعيد يتمّان عبر تطبيق eMED.</span>
+          </p>
+          <a class="link-arrow" href="#app">
+            <span data-i18n="hero.appLink">حمّل تطبيق eMED</span>
+            <svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product composition. Hand-built preview of real eMED screens;
+           replace with exported app screenshots when available. -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero-stage">
+          <div class="hero-stage__glow"></div>
+
+          <svg class="hero-stage__links" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M24 19 C28 22, 30.5 24.5, 33 28"/>
+            <path class="pulse" d="M24 19 C28 22, 30.5 24.5, 33 28"/>
+            <path d="M80 22 C75.5 24.5, 71 27, 68 30.5"/>
+            <path class="pulse" d="M80 22 C75.5 24.5, 71 27, 68 30.5"/>
+            <path d="M24 85 C28 81, 30.5 78, 33 74"/>
+            <path class="pulse" d="M24 85 C28 81, 30.5 78, 33 74"/>
+            <path d="M75 78 C72 74.5, 70 71.5, 68 68"/>
+            <path class="pulse" d="M75 78 C72 74.5, 70 71.5, 68 68"/>
+          </svg>
+
+          <div class="hero-stage__phone floaty">
+            <div class="phone">
+              <div class="phone__frame">
+                <div class="phone__screen">
+                  <span class="phone__notch"></span>
+                  <div class="phone__status">
+                    <span data-i18n="ui.time">٩:٤١</span>
+                    <svg class="icon" aria-hidden="true"><use href="#i-status"></use></svg>
+                  </div>
+                  <div class="ui">
+                    <div class="ui__bar">
+                      <span class="ui__title" data-i18n="ui.search">ابحث عن رعاية</span>
+                      <span class="ui-badge ui-badge--brand" data-i18n="ui.nearby">قريب منك</span>
+                    </div>
+                    <div class="ui-search"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span data-i18n="ui.search">ابحث عن رعاية</span></div>
+                    <div class="ui-chips">
+                      <span class="ui-chip is-on" data-i18n="ui.all">الكل</span>
+                      <span class="ui-chip" data-i18n="ui.doctors">أطباء</span>
+                      <span class="ui-chip" data-i18n="ui.labs">مختبرات</span>
+                      <span class="ui-chip" data-i18n="ui.pharmacies">صيدليات</span>
+                    </div>
+                    <div class="ui-stack">
+                      <!-- SAMPLE DATA -->
+                      <div class="ui-card ui-card--accent">
+                        <span class="ui-avatar">س</span>
+                        <span>
+                          <span class="ui-name" data-i18n="ui.d1">د. سارة العبدالله</span>
+                          <span class="ui-meta"><span data-i18n="ui.d1s">استشارية باطنة</span><i class="ui-dot"></i><span>1.2 <span data-i18n="ui.km">كم</span></span></span>
+                        </span>
+                      </div>
+                      <div class="ui-card">
+                        <span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px" aria-hidden="true"><use href="#i-clinic"></use></svg></span>
+                        <span>
+                          <span class="ui-name" data-i18n="ui.d2">المركز الطبي التخصصي</span>
+                          <span class="ui-meta"><span data-i18n="ui.d2s">عيادات ومركز طبي</span></span>
+                        </span>
+                      </div>
+                      <div class="ui-card">
+                        <span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px" aria-hidden="true"><use href="#i-lab"></use></svg></span>
+                        <span>
+                          <span class="ui-name" data-i18n="ui.d3">مختبر الحياة الطبي</span>
+                          <span class="ui-meta"><span data-i18n="ui.d3s">مختبر · 3 فروع</span></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="ui-map"><i></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="float float--appointment floaty floaty--b">
+            <div class="ui-hero">
+              <div class="ui-hero__row">
+                <span class="ui-hero__label" data-i18n="ui.apptNext">الموعد القادم</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+              </div>
+              <div class="ui-hero__value" data-i18n="ui.apptWhen">الأربعاء · ٠٩:٣٠ ص</div>
+              <div class="ui-hero__row">
+                <span class="ui-hero__label" data-i18n="ui.d1">د. سارة العبدالله</span>
+                <span class="ui-hero__label" data-i18n="ui.apptWhere">الفرع الرئيسي</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="float float--provider floaty floaty--c">
+            <div class="ui-line"><span class="ui-label" data-i18n="ui.branches">الفروع</span><span class="ui-strong">3</span></div>
+            <div class="ui-line"><span class="ui-label" data-i18n="ui.doctorsCount">الأطباء والتخصصات</span><span class="ui-strong">18</span></div>
+            <div class="ui-line"><span class="ui-label" data-i18n="ui.hours">ساعات العمل</span><span class="ui-strong" data-i18n="ui.hoursVal">٨:٠٠ ص – ٨:٠٠ م</span></div>
+            <div class="ui-slots" style="margin-top:8px">
+              <span class="ui-slot is-on">٠٩:٣٠</span><span class="ui-slot">١١:٠٠</span><span class="ui-slot">٠١:١٥</span>
+            </div>
+          </div>
+
+          <div class="float float--pill float--location floaty">
+            <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+            <span>
+              <span class="float__label" data-i18n="ui.nearby">قريب منك</span>
+              <span class="float__sub" data-i18n="cat.pharmacy">صيدلية</span>
+            </span>
+          </div>
+
+          <div class="float float--pill float--family floaty floaty--b">
+            <svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>
+            <span>
+              <span class="float__label" data-i18n="ui.familyTitle">أفراد العائلة</span>
+              <span class="float__sub" data-i18n="ui.inNetwork">ضمن شبكتك</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero__facts">
+      <div class="hero-fact" data-reveal>
+        <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+        <span><strong data-i18n="hero.fact1t">تصفّح دون حساب</strong><span data-i18n="hero.fact1d">اكتشف مقدمي الرعاية وخدماتهم مباشرة من الموقع.</span></span>
+      </div>
+      <div class="hero-fact" data-reveal data-reveal-delay="1">
+        <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+        <span><strong data-i18n="hero.fact2t">مع تأمين أو بدونه</strong><span data-i18n="hero.fact2d">eMED مفيد في الحالتين، والتأمين ليس شرطاً للاستخدام.</span></span>
+      </div>
+      <div class="hero-fact" data-reveal data-reveal-delay="2">
+        <svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg>
+        <span><strong data-i18n="hero.fact3t">بيانات مقدّمي خدمات مُراجَعة</strong><span data-i18n="hero.fact3d">تُراجَع البيانات الأساسية لمقدمي الخدمات قبل نشرها.</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- Discover care                                                          -->
+<!-- ===================================================================== -->
+<section class="section" id="discover" aria-labelledby="discoverTitle">
+  <div class="container">
+
+    <div class="discover__head">
+      <div class="stack-4" data-reveal>
+        <p class="eyebrow" data-i18n="discover.eyebrow">اكتشف الرعاية</p>
+        <h2 id="discoverTitle" data-i18n="discover.title">ابدأ من نوع الرعاية التي تحتاجها</h2>
+      </div>
+      <div class="stack-4 discover__head-actions" data-reveal data-reveal-delay="1">
+        <div class="stack-4">
+          <p class="lead" style="font-size:var(--fs-body)" data-i18n="discover.lead">لكل مقدم رعاية ملف يعرّفك على فروعه وأطبائه وخدماته وساعات عمله قبل أن تحجز.</p>
+          <a class="link-arrow" href="#ecosystem"><span data-i18n="discover.all">تصفّح كل أنواع مقدمي الرعاية</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <ul class="cat-grid">
+      <li class="cell--feature" data-reveal>
+        <a class="cat cat--feature" href="#ecosystem">
+          <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-stethoscope"></use></svg></span>
+          <span class="cat__body">
+            <strong class="cat__title" data-i18n="cat.doctor">طبيب</strong>
+            <span class="cat__desc" data-i18n="cat.doctorDesc">ابحث حسب التخصص، واطّلع على العيادة وساعات العمل وأوقات الإتاحة.</span>
+          </span>
+          <span class="cat__foot">
+            <span class="tag"><svg class="icon" style="width:14px;height:14px" aria-hidden="true"><use href="#i-clock"></use></svg><span data-i18n="ui.availableToday">متاح اليوم</span></span>
+            <span class="cat__arrow"><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+          </span>
+        </a>
+      </li>
+
+      <li data-reveal data-reveal-delay="1">
+        <a class="cat" href="#ecosystem">
+          <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-hospital"></use></svg></span>
+          <span class="cat__body">
+            <strong class="cat__title" data-i18n="cat.hospital">مستشفى</strong>
+            <span class="cat__desc" data-i18n="cat.hospitalDesc">الفروع والأقسام والخدمات المتاحة.</span>
+          </span>
+          <span class="cat__foot"><span class="cat__arrow"><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></span></span>
+        </a>
+      </li>
+
+      <li data-reveal data-reveal-delay="2">
+        <a class="cat" href="#ecosystem">
+          <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-clinic"></use></svg></span>
+          <span class="cat__body">
+            <strong class="cat__title" data-i18n="cat.clinic">عيادة أو مركز طبي</strong>
+            <span class="cat__desc" data-i18n="cat.clinicDesc">عيادات التخصصات والمراكز الطبية القريبة منك.</span>
+          </span>
+          <span class="cat__foot"><span class="cat__arrow"><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></span></span>
+        </a>
+      </li>
+
+      <li data-reveal data-reveal-delay="1">
+        <a class="cat" href="#ecosystem">
+          <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-pharmacy"></use></svg></span>
+          <span class="cat__body">
+            <strong class="cat__title" data-i18n="cat.pharmacy">صيدلية</strong>
+            <span class="cat__desc" data-i18n="cat.pharmacyDesc">مواقع الصيدليات وساعات عملها.</span>
+          </span>
+          <span class="cat__foot"><span class="cat__arrow"><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></span></span>
+        </a>
+      </li>
+
+      <li data-reveal data-reveal-delay="2">
+        <a class="cat" href="#ecosystem">
+          <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-lab"></use></svg></span>
+          <span class="cat__body">
+            <strong class="cat__title" data-i18n="cat.lab">مختبر</strong>
+            <span class="cat__desc" data-i18n="cat.labDesc">المختبرات الطبية والخدمات التي توفّرها.</span>
+          </span>
+          <span class="cat__foot"><span class="cat__arrow"><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></span></span>
+        </a>
+      </li>
+
+      <li class="cell--wide" data-reveal>
+        <a class="cat cat--wide" href="#ecosystem">
+          <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-imaging"></use></svg></span>
+          <span class="cat__body">
+            <strong class="cat__title" data-i18n="cat.imaging">مركز أشعة</strong>
+            <span class="cat__desc" data-i18n="cat.imagingDesc">مراكز الأشعة والتصوير التشخيصي وفروعها وخدماتها.</span>
+          </span>
+          <span class="cat__arrow"><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+        </a>
+      </li>
+
+      <li class="cell--cta" data-reveal data-reveal-delay="1">
+        <button class="cat cat--cta" type="button" id="focusSearch">
+          <span class="cat__body">
+            <strong class="cat__title" data-i18n="discover.ctaTitle">لا تعرف من أين تبدأ؟</strong>
+            <span class="cat__desc" data-i18n="discover.ctaDesc">ابحث باسم التخصص أو الخدمة أو مقدم الخدمة.</span>
+          </span>
+          <span class="link-arrow"><span data-i18n="discover.ctaAction">ابدأ من البحث</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+        </button>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- Ecosystem — the signature section                                      -->
+<!-- ===================================================================== -->
+<section class="section-lg ecosystem on-dark" id="ecosystem" aria-labelledby="ecoTitle">
+  <div class="container-wide">
+    <div class="ecosystem__inner">
+
+      <div class="ecosystem__copy" data-reveal>
+        <p class="eyebrow" data-i18n="eco.eyebrow">المنظومة</p>
+        <h2 id="ecoTitle" data-i18n="eco.title">رعاية متصلة، لا خدمات متفرّقة</h2>
+        <p class="lead" data-i18n="eco.lead">عادةً ما تكون كل جهة صحية جزيرة قائمة بذاتها: عيادة هنا، مختبر هناك، صيدلية في مكان ثالث. يضع eMED هذه الجهات في منظومة واحدة حولك — تكتشفها، وتتعرّف إلى خدماتها، وتدير مواعيدك وأفراد عائلتك وبيانات تأمينك من التجربة نفسها.</p>
+
+        <div class="stack-3">
+          <p class="body-sm" id="ecoLegendHint" data-i18n="eco.legendHint">اختر أحد الأطراف لمعرفة كيف يتصل برحلتك الصحية.</p>
+          <div class="eco-legend" role="group" aria-labelledby="ecoLegendHint" data-eco-legend>
+            <button class="eco-legend__btn" type="button" data-eco="doctor" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-stethoscope"></use></svg><span data-i18n="cat.doctor">طبيب</span></button>
+            <button class="eco-legend__btn" type="button" data-eco="hospital" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-hospital"></use></svg><span data-i18n="cat.hospital">مستشفى</span></button>
+            <button class="eco-legend__btn" type="button" data-eco="clinic" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-clinic"></use></svg><span data-i18n="cat.clinic">عيادة أو مركز طبي</span></button>
+            <button class="eco-legend__btn" type="button" data-eco="pharmacy" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-pharmacy"></use></svg><span data-i18n="cat.pharmacy">صيدلية</span></button>
+            <button class="eco-legend__btn" type="button" data-eco="lab" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-lab"></use></svg><span data-i18n="cat.lab">مختبر</span></button>
+            <button class="eco-legend__btn" type="button" data-eco="imaging" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-imaging"></use></svg><span data-i18n="cat.imaging">مركز أشعة</span></button>
+          </div>
+        </div>
+
+        <div class="stack-3">
+          <p class="body-sm" data-i18n="eco.layersLabel">وما يتصل بك أنت</p>
+          <div class="row">
+            <span class="tag"><svg class="icon" style="width:14px;height:14px" aria-hidden="true"><use href="#i-calendar"></use></svg><span data-i18n="eco.layer1">المواعيد</span></span>
+            <span class="tag"><svg class="icon" style="width:14px;height:14px" aria-hidden="true"><use href="#i-users"></use></svg><span data-i18n="eco.layer2">أفراد العائلة</span></span>
+            <span class="tag"><svg class="icon" style="width:14px;height:14px" aria-hidden="true"><use href="#i-shield"></use></svg><span data-i18n="eco.layer3">بيانات التأمين</span></span>
+            <span class="tag"><svg class="icon" style="width:14px;height:14px" aria-hidden="true"><use href="#i-sparkle"></use></svg><span data-i18n="eco.layer4">الخدمات الصحية الرقمية</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ecosystem__stage" data-reveal data-reveal-delay="1">
+        <div class="orbit" data-eco-orbit>
+
+          <svg class="orbit__rings" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="39" stroke-dasharray="1 3"/>
+            <circle cx="50" cy="50" r="24.5"/>
+          </svg>
+
+          <svg class="orbit__links" viewBox="0 0 100 100" aria-hidden="true">
+            <line data-link="doctor"   x1="50"    y1="33"   x2="50"    y2="19"/>
+            <line data-link="hospital" x1="64.72" y1="41.5" x2="76.85" y2="34.5"/>
+            <line data-link="clinic"   x1="64.72" y1="58.5" x2="76.85" y2="65.5"/>
+            <line data-link="pharmacy" x1="50"    y1="67"   x2="50"    y2="81"/>
+            <line data-link="lab"      x1="35.28" y1="58.5" x2="23.15" y2="65.5"/>
+            <line data-link="imaging"  x1="35.28" y1="41.5" x2="23.15" y2="34.5"/>
+            <!-- a single signal that follows whichever participant is selected -->
+            <line class="orbit__flow" x1="50" y1="19" x2="50" y2="33"/>
+          </svg>
+
+          <div class="orbit__center">
+            <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
+            <strong data-i18n="eco.center">أنت</strong>
+            <span data-i18n="eco.centerSub">رحلتك الصحية</span>
+          </div>
+
+          <button class="orbit__node is-active" type="button" data-eco="doctor" aria-pressed="true" style="--x:50%;--y:11%">
+            <span class="orbit__node-icon"><svg class="icon" aria-hidden="true"><use href="#i-stethoscope"></use></svg></span>
+            <span data-i18n="cat.doctor">طبيب</span>
+          </button>
+          <button class="orbit__node" type="button" data-eco="hospital" aria-pressed="false" style="--x:83.8%;--y:30.5%">
+            <span class="orbit__node-icon"><svg class="icon" aria-hidden="true"><use href="#i-hospital"></use></svg></span>
+            <span data-i18n="cat.hospital">مستشفى</span>
+          </button>
+          <button class="orbit__node" type="button" data-eco="clinic" aria-pressed="false" style="--x:83.8%;--y:69.5%">
+            <span class="orbit__node-icon"><svg class="icon" aria-hidden="true"><use href="#i-clinic"></use></svg></span>
+            <span data-i18n="cat.clinic">عيادة</span>
+          </button>
+          <button class="orbit__node" type="button" data-eco="pharmacy" aria-pressed="false" style="--x:50%;--y:89%">
+            <span class="orbit__node-icon"><svg class="icon" aria-hidden="true"><use href="#i-pharmacy"></use></svg></span>
+            <span data-i18n="cat.pharmacy">صيدلية</span>
+          </button>
+          <button class="orbit__node" type="button" data-eco="lab" aria-pressed="false" style="--x:16.2%;--y:69.5%">
+            <span class="orbit__node-icon"><svg class="icon" aria-hidden="true"><use href="#i-lab"></use></svg></span>
+            <span data-i18n="cat.lab">مختبر</span>
+          </button>
+          <button class="orbit__node" type="button" data-eco="imaging" aria-pressed="false" style="--x:16.2%;--y:30.5%">
+            <span class="orbit__node-icon"><svg class="icon" aria-hidden="true"><use href="#i-imaging"></use></svg></span>
+            <span data-i18n="cat.imaging">مركز أشعة</span>
+          </button>
+        </div>
+
+        <p class="orbit__caption" id="ecoCaption" role="status" aria-live="polite"
+           aria-label="وصف الطرف المحدَّد" data-i18n-attr="aria-label:eco.captionRegion">
+          <strong data-i18n="cat.doctor">طبيب</strong>
+          <span data-i18n="eco.doctorCap">ابحث عن الطبيب المناسب حسب التخصص والموقع، واطّلع على عيادته وساعات عمله وأوقات الإتاحة قبل الحجز.</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- Capabilities                                                           -->
+<!-- ===================================================================== -->
+<section class="section" id="capabilities" aria-labelledby="capTitle">
+  <div class="container">
+    <div class="capabilities__inner">
+
+      <div class="capabilities__aside" data-reveal>
+        <p class="eyebrow" data-i18n="cap.eyebrow">للأفراد والعائلات</p>
+        <h2 id="capTitle" data-i18n="cap.title">ما الذي يمكنك فعله عبر eMED</h2>
+        <p class="lead" style="font-size:var(--fs-body)" data-i18n="cap.lead">قدرات مدعومة اليوم في موقع eMED وتطبيقه — لا وعود مؤجّلة.</p>
+
+        <div class="journey">
+          <span class="journey__step"><span class="journey__num">1</span><span data-i18n="cap.j1">ابحث</span></span>
+          <i class="journey__sep" aria-hidden="true"></i>
+          <span class="journey__step"><span class="journey__num">2</span><span data-i18n="cap.j2">تعرّف</span></span>
+          <i class="journey__sep" aria-hidden="true"></i>
+          <span class="journey__step"><span class="journey__num">3</span><span data-i18n="cap.j3">احجز عبر التطبيق</span></span>
+          <span class="journey__note" data-i18n="cap.jNote">رحلة الحجز القصيرة تبقى بهذه البساطة، وهي جزء من تجربة أوسع.</span>
+        </div>
+      </div>
+
+      <ul class="cap-list">
+        <li class="cap" data-reveal>
+          <span class="cap__num">01</span>
+          <span class="cap__body">
+            <span class="cap__title"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span data-i18n="cap.1t">اكتشاف مقدمي الرعاية</span></span>
+            <span class="cap__desc" data-i18n="cap.1d">ابحث بالطبيب أو التخصص أو الخدمة أو اسم مقدم الخدمة، وحدّد الموقع الذي يناسبك.</span>
+          </span>
+        </li>
+        <li class="cap" data-reveal>
+          <span class="cap__num">02</span>
+          <span class="cap__body">
+            <span class="cap__title"><svg class="icon" aria-hidden="true"><use href="#i-building"></use></svg><span data-i18n="cap.2t">الاطّلاع على ملف مقدم الخدمة</span></span>
+            <span class="cap__desc" data-i18n="cap.2d">الفروع، الأطباء والتخصصات، الخدمات وساعات العمل — في صفحة واحدة واضحة.</span>
+          </span>
+        </li>
+        <li class="cap" data-reveal>
+          <span class="cap__num">03</span>
+          <span class="cap__body">
+            <span class="cap__title"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg><span data-i18n="cap.3t">حجز المواعيد وإدارتها</span></span>
+            <span class="cap__desc" data-i18n="cap.3d">اختر الوقت المناسب من الأوقات المتاحة، وتابع مواعيدك القادمة من التطبيق.</span>
+          </span>
+        </li>
+        <li class="cap" data-reveal>
+          <span class="cap__num">04</span>
+          <span class="cap__body">
+            <span class="cap__title"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg><span data-i18n="cap.4t">إدارة أفراد العائلة</span></span>
+            <span class="cap__desc" data-i18n="cap.4d">أضف أفراد عائلتك إلى حسابك وتابع مواعيدهم ورعايتهم من المكان نفسه.</span>
+          </span>
+        </li>
+        <li class="cap" data-reveal>
+          <span class="cap__num">05</span>
+          <span class="cap__body">
+            <span class="cap__title"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg><span data-i18n="cap.5t">ربط بيانات التأمين</span></span>
+            <span class="cap__desc" data-i18n="cap.5d">اربط بيانات تأمينك الصحي، وتعرّف على مقدمي الخدمات المشمولين ضمن شبكتك.</span>
+          </span>
+        </li>
+        <li class="cap" data-reveal>
+          <span class="cap__num">06</span>
+          <span class="cap__body">
+            <span class="cap__title"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"></use></svg><span data-i18n="cap.6t">الوصول إلى الخدمات الصحية الرقمية المتاحة</span></span>
+            <span class="cap__desc" data-i18n="cap.6d">استفد من الخدمات الصحية الرقمية المتاحة لك عبر منظومة eMED.</span>
+          </span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- App showcase                                                           -->
+<!-- ===================================================================== -->
+<section class="section-lg app" id="app" aria-labelledby="appTitle">
+  <div class="container-wide">
+    <div class="app__inner">
+
+      <div class="app__copy" data-reveal>
+        <div class="stack-4">
+          <p class="eyebrow" data-i18n="app.eyebrow">تطبيق eMED</p>
+          <h2 id="appTitle" data-i18n="app.title">التطبيق الذي تُدار منه رعايتك</h2>
+          <p class="lead" data-i18n="app.lead">من البحث الأول إلى متابعة مواعيد عائلتك — كل شيء في تطبيق واحد لنظامي iOS و Android.</p>
+        </div>
+
+        <div class="feature-list" role="tablist" aria-label="قدرات التطبيق"
+             data-i18n-attr="aria-label:app.featuresLabel" data-app-features>
+          <button class="feature" type="button" role="tab" id="feat-1" aria-controls="screen-1" aria-selected="true" data-feature="1">
+            <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg></span>
+            <span class="feature__body">
+              <span class="feature__title" data-i18n="app.f1t">اكتشاف الرعاية</span>
+              <span class="feature__desc" data-i18n="app.f1d">بحث بالتخصص أو الخدمة أو اسم مقدم الخدمة، مع تحديد الموقع وعرض النتائج القريبة منك.</span>
+            </span>
+            <span class="feature__progress" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="feature" type="button" role="tab" id="feat-2" aria-controls="screen-2" aria-selected="false" tabindex="-1" data-feature="2">
+            <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-building"></use></svg></span>
+            <span class="feature__body">
+              <span class="feature__title" data-i18n="app.f2t">ملف مقدم الخدمة</span>
+              <span class="feature__desc" data-i18n="app.f2d">الفروع والأطباء والتخصصات والخدمات وساعات العمل، بشكل واضح قبل الحجز.</span>
+            </span>
+            <span class="feature__progress" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="feature" type="button" role="tab" id="feat-3" aria-controls="screen-3" aria-selected="false" tabindex="-1" data-feature="3">
+            <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg></span>
+            <span class="feature__body">
+              <span class="feature__title" data-i18n="app.f3t">المواعيد</span>
+              <span class="feature__desc" data-i18n="app.f3d">احجز من الأوقات المتاحة، وتابع مواعيدك القادمة وتفاصيل كل موعد.</span>
+            </span>
+            <span class="feature__progress" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="feature" type="button" role="tab" id="feat-4" aria-controls="screen-4" aria-selected="false" tabindex="-1" data-feature="4">
+            <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg></span>
+            <span class="feature__body">
+              <span class="feature__title" data-i18n="app.f4t">أفراد العائلة</span>
+              <span class="feature__desc" data-i18n="app.f4d">أضف أفراد عائلتك وأدِر رعايتهم ومواعيدهم من حساب واحد.</span>
+            </span>
+            <span class="feature__progress" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="feature" type="button" role="tab" id="feat-5" aria-controls="screen-5" aria-selected="false" tabindex="-1" data-feature="5">
+            <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg></span>
+            <span class="feature__body">
+              <span class="feature__title" data-i18n="app.f5t">ربط التأمين</span>
+              <span class="feature__desc" data-i18n="app.f5d">اربط بيانات تأمينك الصحي وتعرّف على مقدمي الخدمات ضمن شبكتك.</span>
+            </span>
+            <span class="feature__progress" aria-hidden="true"><i></i></span>
+          </button>
+        </div>
+
+        <div class="app__get">
+          <div class="store-row">
+            <!-- TODO: replace href with the real App Store / Google Play listing URLs. -->
+            <a class="store-badge" href="#app" aria-label="حمّل من App Store" data-i18n-attr="aria-label:app.appStore">
+              <img src="assets/img/badge-app-store.svg" alt="Download on the App Store" width="180" height="60" loading="lazy">
+            </a>
+            <a class="store-badge" href="#app" aria-label="احصل عليه من Google Play" data-i18n-attr="aria-label:app.googlePlay">
+              <img src="assets/img/badge-google-play.svg" alt="Get it on Google Play" width="180" height="60" loading="lazy">
+            </a>
+          </div>
+          <div class="qr-block">
+            <!-- TODO: replace with a generated QR image pointing at the app landing link. -->
+            <span class="qr-block__ph" role="img" aria-label="رمز QR" data-i18n-attr="aria-label:app.qrPh">
+              <svg class="icon" style="width:32px;height:32px" aria-hidden="true"><use href="#i-qr"></use></svg>
+            </span>
+            <span class="qr-block__text">
+              <strong data-i18n="app.qrTitle">امسح الرمز للتحميل</strong>
+              <span data-i18n="app.qrDesc">وجّه كاميرا هاتفك إلى الرمز لفتح صفحة التطبيق.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="app__stage" data-reveal data-reveal-delay="1">
+        <div class="app-stage">
+          <div class="app-stage__plate" aria-hidden="true"></div>
+          <span class="app-stage__ring" aria-hidden="true"></span>
+          <span class="app-stage__ring app-stage__ring--b" aria-hidden="true"></span>
+
+          <div class="app-stage__chip" id="appChip" aria-hidden="true">
+            <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+            <span data-i18n="app.f1t">اكتشاف الرعاية</span>
+          </div>
+
+          <div class="app-stage__phone">
+            <div class="phone">
+              <div class="phone__frame">
+                <div class="phone__screen">
+                  <span class="phone__notch" aria-hidden="true"></span>
+                  <div class="phone__status" aria-hidden="true">
+                    <span data-i18n="ui.time">٩:٤١</span>
+                    <svg class="icon"><use href="#i-status"></use></svg>
+                  </div>
+                  <div class="phone__screens" data-app-screens>
+
+                    <!-- 1 · discovery -->
+                    <div class="ui-screen is-active" id="screen-1" role="tabpanel" aria-labelledby="feat-1">
+                      <div class="ui">
+                        <div class="ui__bar"><span class="ui__title" data-i18n="ui.search">ابحث عن رعاية</span><span class="ui-badge ui-badge--brand" data-i18n="ui.nearby">قريب منك</span></div>
+                        <div class="ui-search"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span data-i18n="ui.search">ابحث عن رعاية</span></div>
+                        <div class="ui-chips"><span class="ui-chip is-on" data-i18n="ui.all">الكل</span><span class="ui-chip" data-i18n="ui.doctors">أطباء</span><span class="ui-chip" data-i18n="ui.labs">مختبرات</span></div>
+                        <div class="ui-stack">
+                          <div class="ui-card"><span class="ui-avatar">س</span><span><span class="ui-name" data-i18n="ui.d1">د. سارة العبدالله</span><span class="ui-meta"><span data-i18n="ui.d1s">استشارية باطنة</span><i class="ui-dot"></i><span>1.2 <span data-i18n="ui.km">كم</span></span></span></span></div>
+                          <div class="ui-card"><span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px"><use href="#i-clinic"></use></svg></span><span><span class="ui-name" data-i18n="ui.d2">المركز الطبي التخصصي</span><span class="ui-meta"><span data-i18n="ui.d2s">عيادات ومركز طبي</span></span></span></div>
+                          <div class="ui-card"><span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px"><use href="#i-pharmacy"></use></svg></span><span><span class="ui-name" data-i18n="cat.pharmacy">صيدلية</span><span class="ui-meta"><span data-i18n="ui.hoursVal">٨:٠٠ ص – ٨:٠٠ م</span></span></span></div>
+                        </div>
+                        <div class="ui-map"><i></i></div>
+                      </div>
+                      <div class="ui-tabbar">
+                        <span class="ui-tab"><svg class="icon"><use href="#i-home"></use></svg><span data-i18n="ui.tabHome">الرئيسية</span></span>
+                        <span class="ui-tab is-on"><svg class="icon"><use href="#i-search"></use></svg><span data-i18n="ui.tabSearch">البحث</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-calendar"></use></svg><span data-i18n="ui.tabAppts">المواعيد</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-users"></use></svg><span data-i18n="ui.tabFamily">العائلة</span></span>
+                      </div>
+                    </div>
+
+                    <!-- 2 · provider profile -->
+                    <div class="ui-screen" id="screen-2" role="tabpanel" aria-labelledby="feat-2" hidden>
+                      <div class="ui">
+                        <div class="ui__bar"><span class="ui__title" data-i18n="ui.profileTitle">ملف مقدم الخدمة</span></div>
+                        <div class="ui-card ui-card--flat">
+                          <span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px"><use href="#i-clinic"></use></svg></span>
+                          <span><span class="ui-name" data-i18n="ui.d2">المركز الطبي التخصصي</span><span class="ui-meta"><span data-i18n="ui.d2s">عيادات ومركز طبي</span></span></span>
+                        </div>
+                        <div>
+                          <div class="ui-line"><span class="ui-label" data-i18n="ui.branches">الفروع</span><span class="ui-strong">3</span></div>
+                          <div class="ui-line"><span class="ui-label" data-i18n="ui.doctorsCount">الأطباء والتخصصات</span><span class="ui-strong">18</span></div>
+                          <div class="ui-line"><span class="ui-label" data-i18n="ui.services">الخدمات</span><span class="ui-strong">24</span></div>
+                          <div class="ui-line"><span class="ui-label" data-i18n="ui.hours">ساعات العمل</span><span class="ui-strong" data-i18n="ui.hoursVal">٨:٠٠ ص – ٨:٠٠ م</span></div>
+                        </div>
+                        <span class="ui-label" data-i18n="ui.slots">أوقات متاحة</span>
+                        <div class="ui-slots"><span class="ui-slot is-on">٠٩:٣٠</span><span class="ui-slot">١١:٠٠</span><span class="ui-slot">٠١:١٥</span><span class="ui-slot">٠٣:٤٥</span></div>
+                        <div class="ui-map"><i></i></div>
+                      </div>
+                      <div class="ui-tabbar">
+                        <span class="ui-tab"><svg class="icon"><use href="#i-home"></use></svg><span data-i18n="ui.tabHome">الرئيسية</span></span>
+                        <span class="ui-tab is-on"><svg class="icon"><use href="#i-search"></use></svg><span data-i18n="ui.tabSearch">البحث</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-calendar"></use></svg><span data-i18n="ui.tabAppts">المواعيد</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-users"></use></svg><span data-i18n="ui.tabFamily">العائلة</span></span>
+                      </div>
+                    </div>
+
+                    <!-- 3 · appointments -->
+                    <div class="ui-screen" id="screen-3" role="tabpanel" aria-labelledby="feat-3" hidden>
+                      <div class="ui">
+                        <div class="ui__bar"><span class="ui__title" data-i18n="ui.apptTitle">مواعيدك</span></div>
+                        <div class="ui-hero">
+                          <div class="ui-hero__row"><span class="ui-hero__label" data-i18n="ui.apptNext">الموعد القادم</span><svg class="icon"><use href="#i-calendar"></use></svg></div>
+                          <div class="ui-hero__value" data-i18n="ui.apptWhen">الأربعاء · ٠٩:٣٠ ص</div>
+                          <div class="ui-hero__row"><span class="ui-hero__label" data-i18n="ui.d1">د. سارة العبدالله</span><span class="ui-hero__label" data-i18n="ui.apptWhere">الفرع الرئيسي</span></div>
+                        </div>
+                        <div class="ui-stack">
+                          <div class="ui-card"><span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px"><use href="#i-lab"></use></svg></span><span><span class="ui-name" data-i18n="ui.d3">مختبر الحياة الطبي</span><span class="ui-meta"><span data-i18n="ui.apptWhere">الفرع الرئيسي</span></span></span></div>
+                          <div class="ui-card"><span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px"><use href="#i-imaging"></use></svg></span><span><span class="ui-name" data-i18n="cat.imaging">مركز أشعة</span><span class="ui-meta"><span data-i18n="ui.apptFor">الموعد باسم</span><span data-i18n="ui.m1">ليان</span></span></span></div>
+                        </div>
+                      </div>
+                      <div class="ui-tabbar">
+                        <span class="ui-tab"><svg class="icon"><use href="#i-home"></use></svg><span data-i18n="ui.tabHome">الرئيسية</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-search"></use></svg><span data-i18n="ui.tabSearch">البحث</span></span>
+                        <span class="ui-tab is-on"><svg class="icon"><use href="#i-calendar"></use></svg><span data-i18n="ui.tabAppts">المواعيد</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-users"></use></svg><span data-i18n="ui.tabFamily">العائلة</span></span>
+                      </div>
+                    </div>
+
+                    <!-- 4 · family -->
+                    <div class="ui-screen" id="screen-4" role="tabpanel" aria-labelledby="feat-4" hidden>
+                      <div class="ui">
+                        <div class="ui__bar"><span class="ui__title" data-i18n="ui.familyTitle">أفراد العائلة</span><span class="ui-badge ui-badge--brand" data-i18n="ui.familyAdd">إضافة فرد</span></div>
+                        <div class="ui-stack">
+                          <div class="ui-card"><span class="ui-avatar"><svg class="icon" style="width:16px;height:16px"><use href="#i-user"></use></svg></span><span><span class="ui-name" data-i18n="ui.apptSelf">حسابك</span><span class="ui-meta"><span data-i18n="ui.apptNext">الموعد القادم</span><i class="ui-dot"></i><span data-i18n="ui.apptWhen">الأربعاء · ٠٩:٣٠ ص</span></span></span></div>
+                          <div class="ui-card"><span class="ui-avatar">ل</span><span><span class="ui-name" data-i18n="ui.m1">ليان</span><span class="ui-meta"><span data-i18n="ui.m1s">ابنة</span></span></span></div>
+                          <div class="ui-card"><span class="ui-avatar">خ</span><span><span class="ui-name" data-i18n="ui.m2">خالد</span><span class="ui-meta"><span data-i18n="ui.m2s">والد</span></span></span></div>
+                          <div class="ui-card ui-card--flat"><span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px"><use href="#i-plus"></use></svg></span><span><span class="ui-name" data-i18n="ui.familyAdd">إضافة فرد</span></span></div>
+                        </div>
+                      </div>
+                      <div class="ui-tabbar">
+                        <span class="ui-tab"><svg class="icon"><use href="#i-home"></use></svg><span data-i18n="ui.tabHome">الرئيسية</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-search"></use></svg><span data-i18n="ui.tabSearch">البحث</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-calendar"></use></svg><span data-i18n="ui.tabAppts">المواعيد</span></span>
+                        <span class="ui-tab is-on"><svg class="icon"><use href="#i-users"></use></svg><span data-i18n="ui.tabFamily">العائلة</span></span>
+                      </div>
+                    </div>
+
+                    <!-- 5 · insurance -->
+                    <div class="ui-screen" id="screen-5" role="tabpanel" aria-labelledby="feat-5" hidden>
+                      <div class="ui">
+                        <div class="ui__bar"><span class="ui__title" data-i18n="ui.insTitle">التأمين</span><span class="ui-badge" data-i18n="ui.insLinked">مرتبطة</span></div>
+                        <div class="ui-hero">
+                          <div class="ui-hero__row"><span class="ui-hero__label" data-i18n="ui.insCard">بطاقة التأمين</span><svg class="icon"><use href="#i-shield"></use></svg></div>
+                          <div class="ui-hero__value">•••• •••• 4821</div>
+                        </div>
+                        <span class="ui-label" data-i18n="ui.insNetwork">مقدمو خدمات ضمن شبكتك</span>
+                        <div class="ui-stack">
+                          <div class="ui-card"><span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px"><use href="#i-hospital"></use></svg></span><span><span class="ui-name" data-i18n="cat.hospital">مستشفى</span><span class="ui-meta"><span class="ui-badge" data-i18n="ui.inNetwork">ضمن شبكتك</span></span></span></div>
+                          <div class="ui-card"><span class="ui-avatar ui-avatar--sq"><svg class="icon" style="width:16px;height:16px"><use href="#i-lab"></use></svg></span><span><span class="ui-name" data-i18n="ui.d3">مختبر الحياة الطبي</span><span class="ui-meta"><span class="ui-badge" data-i18n="ui.inNetwork">ضمن شبكتك</span></span></span></div>
+                        </div>
+                      </div>
+                      <div class="ui-tabbar">
+                        <span class="ui-tab is-on"><svg class="icon"><use href="#i-home"></use></svg><span data-i18n="ui.tabHome">الرئيسية</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-search"></use></svg><span data-i18n="ui.tabSearch">البحث</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-calendar"></use></svg><span data-i18n="ui.tabAppts">المواعيد</span></span>
+                        <span class="ui-tab"><svg class="icon"><use href="#i-users"></use></svg><span data-i18n="ui.tabFamily">العائلة</span></span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- Insurance — supporting, deliberately brief                             -->
+<!-- ===================================================================== -->
+<section class="section" id="insurance" aria-labelledby="insTitle">
+  <div class="container">
+    <div class="section-head section-head--center" style="margin-bottom:var(--s-9)" data-reveal>
+      <p class="eyebrow" data-i18n="ins.eyebrow">التأمين الصحي</p>
+      <h2 id="insTitle" data-i18n="ins.title">التأمين جزء من التجربة، وليس شرطاً لها</h2>
+      <p class="lead" style="font-size:var(--fs-body)" data-i18n="ins.lead">سواء كان لديك تأمين صحي أم لا، تبقى إمكانية اكتشاف الرعاية والوصول إليها متاحة لك عبر eMED.</p>
+    </div>
+
+    <div class="insurance__panel" data-reveal data-reveal-delay="1">
+      <div class="ins-col ins-col--with">
+        <div class="ins-col__head">
+          <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg></span>
+          <h3 data-i18n="ins.withTitle">لديك تأمين صحي</h3>
+        </div>
+        <ul class="ins-list">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n="ins.with1">اربط بيانات تأمينك من تطبيق eMED.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n="ins.with2">تعرّف على مقدمي الخدمات المشمولين ضمن شبكتك.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n="ins.with3">استفد من الخدمات الصحية المرتبطة بتغطيتك عند توفّرها.</span></li>
+        </ul>
+      </div>
+
+      <div class="ins-col ins-col--without">
+        <div class="ins-col__head">
+          <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
+          <h3 data-i18n="ins.withoutTitle">ليس لديك تأمين</h3>
+        </div>
+        <ul class="ins-list">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n="ins.without1">ابحث عن الأطباء والمؤسسات والخدمات الصحية دون قيود.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n="ins.without2">اطّلع على الخدمات وساعات العمل والأوقات المتاحة.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n="ins.without3">احجز مواعيدك عبر التطبيق دون الحاجة إلى تأمين.</span></li>
+        </ul>
+      </div>
+
+      <span class="insurance__divider" aria-hidden="true"></span>
+      <span class="insurance__node" aria-hidden="true" data-i18n="ins.or">أو</span>
+    </div>
+
+    <p class="insurance__foot" data-reveal data-reveal-delay="2">
+      <svg class="icon" aria-hidden="true"><use href="#i-info"></use></svg>
+      <span data-i18n="ins.note">ربط التأمين اختياري بالكامل، ويمكنك تعديله أو إزالته من التطبيق في أي وقت.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- Providers                                                              -->
+<!-- ===================================================================== -->
+<section class="section-lg providers" id="providers" aria-labelledby="provTitle">
+  <div class="container-wide">
+
+    <div class="providers__head">
+      <div class="stack-4" data-reveal>
+        <p class="eyebrow" data-i18n="prov.eyebrow">لمقدمي الرعاية الصحية</p>
+        <h2 id="provTitle" data-i18n="prov.title">كن جزءاً من المنظومة التي يبحث المرضى داخلها</h2>
+      </div>
+      <p class="lead" style="font-size:var(--fs-body)" data-reveal data-reveal-delay="1" data-i18n="prov.lead">من طبيب يعمل بمفرده إلى مستشفى بعدة فروع — يمنحك eMED ملفاً رقمياً كاملاً وإدارة لخدماتك وأوقات الإتاحة، ويصلك بمستخدمي المنظومة.</p>
+    </div>
+
+    <div class="providers__panel" data-reveal>
+      <div class="providers__side">
+        <div class="stack-3">
+          <p class="body-sm" id="provTypeLabel" data-i18n="prov.typeLabel">اختر نوع مقدم الخدمة</p>
+          <div class="segmented" role="tablist" aria-labelledby="provTypeLabel" data-prov-tabs>
+            <button class="segmented__btn" type="button" role="tab" id="pt-doctor"   aria-controls="provPanel" aria-selected="true"  data-prov="doctor"   data-i18n="prov.doctor">طبيب</button>
+            <button class="segmented__btn" type="button" role="tab" id="pt-hospital" aria-controls="provPanel" aria-selected="false" tabindex="-1" data-prov="hospital" data-i18n="prov.hospital">مستشفى</button>
+            <button class="segmented__btn" type="button" role="tab" id="pt-clinic"   aria-controls="provPanel" aria-selected="false" tabindex="-1" data-prov="clinic"   data-i18n="prov.clinic">عيادة أو مركز طبي</button>
+            <button class="segmented__btn" type="button" role="tab" id="pt-pharmacy" aria-controls="provPanel" aria-selected="false" tabindex="-1" data-prov="pharmacy" data-i18n="prov.pharmacy">صيدلية</button>
+            <button class="segmented__btn" type="button" role="tab" id="pt-lab"      aria-controls="provPanel" aria-selected="false" tabindex="-1" data-prov="lab"      data-i18n="prov.lab">مختبر</button>
+            <button class="segmented__btn" type="button" role="tab" id="pt-imaging"  aria-controls="provPanel" aria-selected="false" tabindex="-1" data-prov="imaging"  data-i18n="prov.imaging">مركز أشعة</button>
+          </div>
+        </div>
+
+        <div class="provider-value" id="provPanel" role="tabpanel" aria-labelledby="pt-doctor" tabindex="0">
+          <h3 id="provValueTitle" data-i18n="prov.doctorTitle">ملف مهني يجده المرضى وقت بحثهم</h3>
+          <ul class="value-list" id="provValueList">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n-html="prov.doctor1"><strong>ملف طبيب كامل</strong> يعرض تخصصك وعيادتك وطرق الوصول إليك.</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n-html="prov.doctor2"><strong>ساعات العمل وأوقات الإتاحة</strong> تحدّدها بنفسك وتحدّثها متى شئت.</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span data-i18n-html="prov.doctor3"><strong>طلبات مواعيد</strong> تصلك من مستخدمي تطبيق eMED مباشرة.</span></li>
+          </ul>
+        </div>
+
+        <div class="providers__cta">
+          <!-- TODO: point at the real join form and provider portal URLs. -->
+          <a class="btn btn--primary" href="#support"><span data-i18n="prov.join">انضم إلى eMED</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn--outline" href="#support"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg><span data-i18n="prov.portal">الدخول إلى بوابة مقدمي الخدمات</span></a>
+        </div>
+      </div>
+
+      <div class="providers__stage">
+        <!-- Provider portal preview. Replace with a real portal screenshot. -->
+        <div class="portal" role="img" aria-label="معاينة بوابة مقدمي الخدمات" data-i18n-attr="aria-label:prov.portalPreview">
+          <div class="portal__chrome">
+            <span class="portal__dot"></span><span class="portal__dot"></span><span class="portal__dot"></span>
+            <span class="portal__url" data-i18n="portal.url">providers.emed — بوابة مقدمي الخدمات</span>
+          </div>
+          <div class="portal__body">
+            <div class="portal__nav">
+              <span class="portal__nav-item is-on"><svg class="icon"><use href="#i-grid"></use></svg><span data-i18n="portal.nav1">لوحة المؤسسة</span></span>
+              <span class="portal__nav-item"><svg class="icon"><use href="#i-building"></use></svg><span data-i18n="portal.nav2">الفروع</span></span>
+              <span class="portal__nav-item"><svg class="icon"><use href="#i-stethoscope"></use></svg><span data-i18n="portal.nav3">الأطباء</span></span>
+              <span class="portal__nav-item"><svg class="icon"><use href="#i-list"></use></svg><span data-i18n="portal.nav4">الخدمات</span></span>
+              <span class="portal__nav-item"><svg class="icon"><use href="#i-clock"></use></svg><span data-i18n="portal.nav5">أوقات الإتاحة</span></span>
+            </div>
+            <div class="portal__main">
+              <div class="portal__head">
+                <span class="portal__title" data-i18n="portal.title">ملف المؤسسة</span>
+                <span class="ui-badge"><span data-i18n="portal.live">الملف منشور</span></span>
+              </div>
+              <div class="portal__grid">
+                <span class="portal__stat"><span data-i18n="portal.stat1">الفروع</span><strong>3</strong></span>
+                <span class="portal__stat"><span data-i18n="portal.stat2">الأطباء</span><strong>18</strong></span>
+                <span class="portal__stat"><span data-i18n="portal.stat3">الخدمات</span><strong>24</strong></span>
+              </div>
+              <div class="portal__table">
+                <div class="portal__row portal__row--head"><span data-i18n="portal.colName">الفرع</span><span data-i18n="portal.colCity">المدينة</span><span data-i18n="portal.colState">الحالة</span></div>
+                <div class="portal__row"><strong data-i18n="portal.b1">الفرع الرئيسي</strong><span>—</span><span class="ui-badge" data-i18n="portal.published">منشور</span></div>
+                <div class="portal__row"><strong data-i18n="portal.b2">فرع الشمال</strong><span>—</span><span class="ui-badge" data-i18n="portal.published">منشور</span></div>
+                <div class="portal__row"><strong data-i18n="portal.b3">فرع الغرب</strong><span>—</span><span class="ui-badge" data-i18n="portal.published">منشور</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ol class="join-steps" aria-label="خطوات الانضمام" data-i18n-attr="aria-label:prov.stepsTitle">
+      <li class="join-step" data-reveal>
+        <span class="join-step__num">01</span>
+        <h3 class="join-step__title" data-i18n="prov.s1t">قدّم طلب الانضمام</h3>
+        <p class="join-step__desc" data-i18n="prov.s1d">أرسل بيانات المؤسسة أو العيادة الأساسية عبر نموذج الانضمام.</p>
+      </li>
+      <li class="join-step" data-reveal data-reveal-delay="1">
+        <span class="join-step__num">02</span>
+        <h3 class="join-step__title" data-i18n="prov.s2t">مراجعة البيانات</h3>
+        <p class="join-step__desc" data-i18n="prov.s2d">يراجع فريق eMED البيانات الأساسية قبل تفعيل الملف ونشره.</p>
+      </li>
+      <li class="join-step" data-reveal data-reveal-delay="2">
+        <span class="join-step__num">03</span>
+        <h3 class="join-step__title" data-i18n="prov.s3t">إدارة ملفك من البوابة</h3>
+        <p class="join-step__desc" data-i18n="prov.s3d">أضف الفروع والأطباء والخدمات وساعات العمل، وابدأ استقبال طلبات المواعيد.</p>
+      </li>
+    </ol>
+
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- About                                                                  -->
+<!-- ===================================================================== -->
+<section class="section" id="about" aria-labelledby="aboutTitle">
+  <div class="container">
+    <div class="about__inner">
+      <div class="stack-6" data-reveal>
+        <p class="eyebrow" data-i18n="about.eyebrow">عن eMED</p>
+        <h2 class="sr-only" id="aboutTitle" data-i18n="about.eyebrow">عن eMED</h2>
+        <p class="about__statement" data-i18n-html="about.statementHtml">eMED منصة رقمية <em>تربط مستخدمي الرعاية الصحية بمقدّميها</em> في تجربة واحدة: موقع عام تكتشف من خلاله الرعاية، وتطبيق تدير منه مواعيدك وعائلتك وبيانات تأمينك، وبوابة يدير بها مقدمو الخدمات ملفاتهم وخدماتهم وأوقات إتاحتهم.</p>
+      </div>
+
+      <div class="about-facts" data-reveal data-reveal-delay="1">
+        <div class="about-fact">
+          <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-layers"></use></svg></span>
+          <span class="about-fact__body"><h3 data-i18n="about.f1t">ما هو eMED؟</h3><p data-i18n="about.f1d">منظومة رقمية للرعاية الصحية تجمع الأفراد ومقدمي الخدمات الصحية في تجربة واحدة متصلة.</p></span>
+        </div>
+        <div class="about-fact">
+          <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-network"></use></svg></span>
+          <span class="about-fact__body"><h3 data-i18n="about.f2t">ما المشكلة التي يعالجها؟</h3><p data-i18n="about.f2d">معلومات مقدمي الرعاية مبعثرة وغير محدّثة، والوصول إليهم يتطلّب اتصالات ومحاولات متكرّرة. يجمع eMED هذه المعلومات ويجعل الوصول إليها مباشراً.</p></span>
+        </div>
+        <div class="about-fact">
+          <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg></span>
+          <span class="about-fact__body"><h3 data-i18n="about.f3t">من الذي يربطه؟</h3><p data-i18n="about.f3d">الأفراد والعائلات من جهة، والأطباء والمستشفيات والعيادات والصيدليات والمختبرات ومراكز الأشعة من جهة أخرى.</p></span>
+        </div>
+        <div class="about-fact">
+          <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg></span>
+          <span class="about-fact__body"><h3 data-i18n="about.f4t">من يقف خلفه؟</h3><p data-i18n="about.f4d">eMED منصة مطوّرة ومشغّلة بواسطة Future Information Systems.</p></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- Trust                                                                  -->
+<!-- ===================================================================== -->
+<section class="section section--muted" id="trust" aria-labelledby="trustTitle">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:clamp(28px,3vw,48px)" data-reveal>
+      <p class="eyebrow" data-i18n="trust.eyebrow">الثقة</p>
+      <h2 id="trustTitle" data-i18n="trust.title">معلومات واضحة، وتعامل مسؤول مع بياناتك</h2>
+    </div>
+
+    <div class="trust-band">
+      <div class="trust-item" data-reveal>
+        <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg></span>
+        <h3 data-i18n="trust.1t">بيانات مقدّمي خدمات مُراجَعة</h3>
+        <p data-i18n="trust.1d">تُراجَع البيانات الأساسية لمقدمي الخدمات قبل نشرها على المنصة، ويتولّى مقدم الخدمة تحديثها من بوابته.</p>
+      </div>
+      <div class="trust-item" data-reveal data-reveal-delay="1">
+        <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg></span>
+        <h3 data-i18n="trust.2t">معلومات عملية لا تسويقية</h3>
+        <p data-i18n="trust.2d">الفروع والمواقع والخدمات وساعات العمل وأوقات الإتاحة — ما تحتاجه فعلاً لاتخاذ القرار.</p>
+      </div>
+      <div class="trust-item" data-reveal data-reveal-delay="2">
+        <span class="icon-tile icon-tile--sm"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg></span>
+        <h3 data-i18n="trust.3t">خصوصية وسياسات معلنة</h3>
+        <p data-i18n="trust.3d">تُستخدم معلوماتك وفق سياسة خصوصية وشروط استخدام منشورة ويمكنك الاطلاع عليها في أي وقت.</p>
+      </div>
+    </div>
+
+    <p class="trust-note">
+      <svg class="icon" aria-hidden="true"><use href="#i-info"></use></svg>
+      <span data-i18n="trust.note">نلتزم بذكر ما هو قائم فعلاً فقط. أي شهادات أو معايير امتثال إضافية لن تُعرض هنا إلا بعد اعتمادها رسمياً.</span>
+    </p>
+  </div>
+</section>
+
+<!-- =====================================================================
+     Social proof.
+     HIDDEN BY DESIGN: this section stays out of the page until every
+     data-value below holds a verified number. assets/js/app.js reveals it
+     only when they are all filled in. Do not invent figures.
+     ===================================================================== -->
+<section class="section" id="proof" data-proof hidden aria-labelledby="proofTitle">
+  <div class="container">
+    <h2 class="section-head section-head--center" id="proofTitle" style="margin-bottom:var(--s-9)" data-i18n="proof.title">eMED بالأرقام</h2>
+    <dl class="proof-grid">
+      <div class="proof-item"><dt data-value=""></dt><dd data-i18n="proof.providers">مقدم رعاية صحية</dd></div>
+      <div class="proof-item"><dt data-value=""></dt><dd data-i18n="proof.facilities">منشأة صحية</dd></div>
+      <div class="proof-item"><dt data-value=""></dt><dd data-i18n="proof.users">مستخدم</dd></div>
+      <div class="proof-item"><dt data-value=""></dt><dd data-i18n="proof.cities">مدينة ومنطقة</dd></div>
+    </dl>
+    <!-- Partner logos go here once approved: <div class="proof-logos">…</div> -->
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- Support & FAQ                                                          -->
+<!-- ===================================================================== -->
+<section class="section section--muted" id="support" aria-labelledby="supTitle">
+  <div class="container">
+    <div class="faq__inner">
+
+      <div class="faq__aside" data-reveal>
+        <div class="stack-4">
+          <p class="eyebrow" data-i18n="sup.eyebrow">الدعم</p>
+          <h2 id="supTitle" data-i18n="sup.title">الأسئلة الشائعة</h2>
+          <p class="lead" style="font-size:var(--fs-body)" data-i18n="sup.lead">إجابات مختصرة عن أكثر ما يُسأل عنه. لم تجد ما تبحث عنه؟ فريق الدعم موجود.</p>
+        </div>
+
+        <div class="support-card">
+          <h3 class="h4" data-i18n="sup.contactTitle">تحتاج مساعدة؟</h3>
+          <!-- TODO: replace the placeholder addresses below with real support channels. -->
+          <a class="support-link" href="#support">
+            <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+            <span><strong data-i18n="sup.email">راسل الدعم</strong><span data-i18n="sup.emailSub">نرد خلال أوقات العمل الرسمية.</span></span>
+            <svg class="icon icon-arrow" aria-hidden="true" style="width:15px;height:15px"><use href="#i-arrow"></use></svg>
+          </a>
+          <hr class="rule">
+          <a class="support-link" href="#support">
+            <svg class="icon" aria-hidden="true"><use href="#i-support"></use></svg>
+            <span><strong data-i18n="sup.contact">تواصل معنا</strong><span data-i18n="sup.contactSub">استفسارات عامة وطلبات الشراكة.</span></span>
+            <svg class="icon icon-arrow" aria-hidden="true" style="width:15px;height:15px"><use href="#i-arrow"></use></svg>
+          </a>
+          <hr class="rule">
+          <a class="support-link" href="#providers">
+            <svg class="icon" aria-hidden="true"><use href="#i-building"></use></svg>
+            <span><strong data-i18n="sup.provider">دعم مقدمي الخدمات</strong><span data-i18n="sup.providerSub">مساعدة تتعلق بالملف والبوابة والانضمام.</span></span>
+            <svg class="icon icon-arrow" aria-hidden="true" style="width:15px;height:15px"><use href="#i-arrow"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="accordion" data-accordion data-reveal data-reveal-delay="1">
+        <div class="acc-item">
+          <h3><button class="acc-trigger" type="button" aria-expanded="true" aria-controls="a1" id="t1"><span data-i18n="sup.q1">هل أحتاج إلى حساب لاستخدام الموقع؟</span><span class="acc-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></span></button></h3>
+          <div class="acc-panel is-open" id="a1" role="region" aria-labelledby="t1"><div><p data-i18n="sup.a1">لا. تصفّح مقدمي الرعاية والاطّلاع على ملفاتهم وخدماتهم متاح دون حساب. الحجز وإدارة المواعيد وأفراد العائلة وربط التأمين تتم عبر تطبيق eMED.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-trigger" type="button" aria-expanded="false" aria-controls="a2" id="t2"><span data-i18n="sup.q2">هل استخدام eMED يتطلّب تأميناً صحياً؟</span><span class="acc-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></span></button></h3>
+          <div class="acc-panel" id="a2" role="region" aria-labelledby="t2"><div><p data-i18n="sup.a2">لا. يمكنك اكتشاف مقدمي الرعاية وحجز المواعيد المتاحة دون تأمين. وإذا كان لديك تأمين، يمكنك ربط بياناته لمعرفة مقدمي الخدمات المشمولين ضمن شبكتك.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-trigger" type="button" aria-expanded="false" aria-controls="a3" id="t3"><span data-i18n="sup.q3">كيف أحجز موعداً؟</span><span class="acc-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></span></button></h3>
+          <div class="acc-panel" id="a3" role="region" aria-labelledby="t3"><div><p data-i18n="sup.a3">ابحث عن مقدم الرعاية من الموقع أو التطبيق، واطّلع على ملفه وخدماته وأوقات إتاحته، ثم أكمل الحجز من تطبيق eMED وتابع مواعيدك القادمة داخله.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-trigger" type="button" aria-expanded="false" aria-controls="a4" id="t4"><span data-i18n="sup.q4">هل يمكنني إدارة مواعيد أفراد عائلتي؟</span><span class="acc-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></span></button></h3>
+          <div class="acc-panel" id="a4" role="region" aria-labelledby="t4"><div><p data-i18n="sup.a4">نعم. يمكنك إضافة أفراد عائلتك إلى حسابك في التطبيق ومتابعة مواعيدهم ورعايتهم من المكان نفسه.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-trigger" type="button" aria-expanded="false" aria-controls="a5" id="t5"><span data-i18n="sup.q5">أنا مقدم خدمة صحية. كيف أنضم؟</span><span class="acc-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></span></button></h3>
+          <div class="acc-panel" id="a5" role="region" aria-labelledby="t5"><div><p data-i18n="sup.a5">قدّم طلب الانضمام مع بيانات المؤسسة أو العيادة الأساسية. بعد مراجعة البيانات، تدير ملفك وفروعك وأطباءك وخدماتك وأوقات الإتاحة من بوابة مقدمي الخدمات.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-trigger" type="button" aria-expanded="false" aria-controls="a6" id="t6"><span data-i18n="sup.q6">كيف يتم التعامل مع بياناتي؟</span><span class="acc-icon"><svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg></span></button></h3>
+          <div class="acc-panel" id="a6" role="region" aria-labelledby="t6"><div><p data-i18n="sup.a6">تُستخدم المعلومات وفق سياسة الخصوصية وشروط الاستخدام المنشورة على المنصة، ويمكنك مراجعتهما في أي وقت من روابط أسفل الصفحة.</p></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- Closing CTA                                                            -->
+<!-- ===================================================================== -->
+<section class="cta-band on-dark" aria-label="ابدأ مع eMED">
+  <div class="container">
+    <div class="cta-band__grid">
+      <div class="cta-card" data-reveal>
+        <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-mobile"></use></svg></span>
+        <h2 class="h3" data-i18n="cta.p1t">ابدأ رعايتك من هنا</h2>
+        <p class="body-sm" data-i18n="cta.p1d">اكتشف مقدمي الرعاية القريبين منك، ثم أكمل الحجز وإدارة المواعيد من تطبيق eMED.</p>
+        <div class="cta-card__actions">
+          <a class="btn btn--primary" href="#discover"><span data-i18n="cta.p1a">اكتشف الرعاية</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn--outline" href="#app" data-i18n="cta.p1b">حمّل التطبيق</a>
+        </div>
+      </div>
+      <div class="cta-card" data-reveal data-reveal-delay="1">
+        <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-network"></use></svg></span>
+        <h2 class="h3" data-i18n="cta.p2t">انضم إلى المنظومة</h2>
+        <p class="body-sm" data-i18n="cta.p2d">أنشئ ملفك الرقمي، أدِر خدماتك وأوقات إتاحتك، وكن ظاهراً أمام من يبحث عن رعاية.</p>
+        <div class="cta-card__actions">
+          <a class="btn btn--primary" href="#providers"><span data-i18n="cta.p2a">انضم إلى eMED</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn--outline" href="#providers"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg><span data-i18n="cta.p2b">بوابة مقدمي الخدمات</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================================================================== -->
+<!-- Footer                                                                 -->
+<!-- ===================================================================== -->
+<footer class="site-footer on-dark">
+  <div class="container">
+    <div class="footer__top">
+
+      <div class="footer__brand">
+        <a class="logo" href="#top" aria-label="eMED">
+          <!-- reversed lockup: navy type knocked out to white for the dark footer -->
+          <img src="assets/img/emed-logo-light.svg" alt="" width="1756" height="447" aria-hidden="true" loading="lazy">
+        </a>
+        <p class="footer__desc" data-i18n="foot.desc">منظومة رقمية للرعاية الصحية تربط الأفراد والعائلات بالأطباء والمستشفيات والعيادات والصيدليات والمختبرات ومراكز الأشعة.</p>
+        <div class="footer__stores">
+          <a class="store-badge" href="#app" aria-label="حمّل من App Store" data-i18n-attr="aria-label:app.appStore"><img src="assets/img/badge-app-store.svg" alt="Download on the App Store" width="180" height="60" loading="lazy"></a>
+          <a class="store-badge" href="#app" aria-label="احصل عليه من Google Play" data-i18n-attr="aria-label:app.googlePlay"><img src="assets/img/badge-google-play.svg" alt="Get it on Google Play" width="180" height="60" loading="lazy"></a>
+        </div>
+      </div>
+
+      <nav class="footer__col" aria-label="eMED">
+        <h3 data-i18n="foot.emed">eMED</h3>
+        <ul>
+          <li><a href="#about"><span data-i18n="foot.about">عن eMED</span></a></li>
+          <li><a href="#support"><span data-i18n="foot.contact">تواصل معنا</span></a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="للأفراد" data-i18n-attr="aria-label:foot.individuals">
+        <h3 data-i18n="foot.individuals">للأفراد</h3>
+        <ul>
+          <li><a href="#discover"><span data-i18n="foot.discover">اكتشف الرعاية</span></a></li>
+          <li><a href="#app"><span data-i18n="foot.app">تطبيق eMED</span></a></li>
+          <li><a href="#support"><span data-i18n="foot.faq">الأسئلة الشائعة</span></a></li>
+          <li><a href="#support"><span data-i18n="foot.support">الدعم</span></a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="لمقدمي الخدمات" data-i18n-attr="aria-label:foot.providers">
+        <h3 data-i18n="foot.providers">لمقدمي الخدمات</h3>
+        <ul>
+          <li><a href="#providers"><span data-i18n="foot.join">انضم إلى eMED</span></a></li>
+          <li><a href="#providers"><span data-i18n="foot.steps">خطوات الانضمام</span></a></li>
+          <li><a href="#providers"><span data-i18n="foot.portal">بوابة مقدمي الخدمات</span><svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg></a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="قانوني" data-i18n-attr="aria-label:foot.legal">
+        <h3 data-i18n="foot.legal">قانوني</h3>
+        <ul>
+          <!-- TODO: link to the published policy pages. -->
+          <li><a href="#"><span data-i18n="foot.privacy">سياسة الخصوصية</span></a></li>
+          <li><a href="#"><span data-i18n="foot.terms">شروط الاستخدام</span></a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="footer__bottom">
+      <span data-i18n="foot.rights" data-year>© 2026 eMED. جميع الحقوق محفوظة.</span>
+      <span class="footer__credit" data-i18n="foot.credit">تطوير وتشغيل Future Information Systems</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile navigation drawer. Lives at the end of the document so the
+     page heading order starts at the h1, and so it stacks above everything. -->
+<div class="nav-scrim" id="navScrim" hidden></div>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-labelledby="navDrawerTitle" hidden>
+  <div class="nav-drawer__head">
+    <h2 class="h4" id="navDrawerTitle" data-i18n="nav.drawerTitle">القائمة</h2>
+    <button class="nav-toggle" id="navClose" type="button" aria-label="إغلاق القائمة" data-i18n-attr="aria-label:nav.menuClose">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+  <div class="nav-drawer__body">
+    <ul class="nav-drawer__list">
+      <li><a class="nav-drawer__link" href="#top"><span data-i18n="nav.home">الرئيسية</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a></li>
+      <li><a class="nav-drawer__link" href="#discover"><span data-i18n="nav.discover">اكتشف الرعاية</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a></li>
+      <li><a class="nav-drawer__link" href="#app"><span data-i18n="nav.app">تطبيق eMED</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a></li>
+      <li><a class="nav-drawer__link" href="#providers"><span data-i18n="nav.providers">لمقدمي الخدمات</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a></li>
+      <li><a class="nav-drawer__link" href="#about"><span data-i18n="nav.about">عن eMED</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a></li>
+      <li><a class="nav-drawer__link" href="#support"><span data-i18n="nav.support">الدعم</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a></li>
+    </ul>
+    <div class="nav-drawer__actions">
+      <a class="btn btn--primary btn--block" href="#app" data-i18n="nav.download">حمّل التطبيق</a>
+      <a class="btn btn--outline btn--block" href="#providers" data-i18n="nav.portal">بوابة مقدمي الخدمات</a>
+    </div>
+  </div>
+  <div class="nav-drawer__foot">
+    <span class="body-sm" data-i18n="nav.langFull">اللغة</span>
+    <button class="lang-toggle" type="button" data-lang-toggle
+            aria-label="Switch to English — التبديل إلى الإنجليزية"
+            data-i18n-attr="aria-label:nav.langAria">
+      <svg class="icon" aria-hidden="true"><use href="#i-globe"></use></svg>
+      <span data-i18n="nav.lang">EN</span>
+    </button>
+  </div>
+</div>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

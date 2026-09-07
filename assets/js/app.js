@@ -562,6 +562,160 @@
     });
   }
 
+  /* =========================================== discover — the living field ==
+     The featured "doctor" tile carries a small care field: four doctors drift
+     along a slow ellipse, five ecosystem glyphs drift along a much slower one
+     behind them. Depth (scale, opacity, stacking) follows the ellipse, and the
+     doctor nearest the viewer becomes the preview card. Purely decorative, so
+     it runs only while on screen and stands still under reduced motion.      */
+  function initCareField() {
+    var field = $('[data-care-field]');
+    if (!field) return;
+
+    var docs = $$('.cf__doc', field);
+    var chips = $$('.cf__chip', field);
+    var card = $('[data-cf-card]', field);
+    var svg = $('.cf__rings', field);
+    var ringDoc = $('[data-cf-ring="doc"]', field);
+    var ringEco = $('[data-cf-ring="eco"]', field);
+    if (!docs.length || !card) return;
+
+    /* one full turn, in ms — slow enough to read as drift, not rotation */
+    var DOC_TURN = 46000;
+    var ECO_TURN = 300000;
+    /* how far out each orbit sits, as a fraction of the field box */
+    var DOC_R = 0.35;
+    var ECO_R = 0.46;
+
+    var w = 0, h = 0;
+    var elapsed = 0, last = 0, raf = 0, live = false, active = -1;
+    var swap = null;
+
+    function ellipse(el, r) {
+      if (!el) return;
+      el.setAttribute('cx', (w / 2).toFixed(1));
+      el.setAttribute('cy', (h / 2).toFixed(1));
+      el.setAttribute('rx', (w * r).toFixed(1));
+      el.setAttribute('ry', (h * r).toFixed(1));
+    }
+
+    function measure() {
+      var r = field.getBoundingClientRect();
+      w = r.width; h = r.height;
+      if (w <= 0 || h <= 0) return false;
+      if (svg) svg.setAttribute('viewBox', '0 0 ' + w.toFixed(1) + ' ' + h.toFixed(1));
+      ellipse(ringDoc, DOC_R);
+      ellipse(ringEco, ECO_R);
+      return true;
+    }
+
+    /* places one orbit and returns the index of whichever item is nearest the
+       viewer — the front of the ellipse, where sin() peaks */
+    function place(list, radius, turn, dir, phase, minScale, spanScale, minAlpha, spanAlpha) {
+      var rx = w * radius, ry = h * radius;
+      var front = 0, nearest = -2;
+      for (var i = 0; i < list.length; i++) {
+        var a = dir * (elapsed / turn) * Math.PI * 2 + (i / list.length) * Math.PI * 2 + phase;
+        var depth = (Math.sin(a) + 1) / 2;
+        var el = list[i];
+        el.style.translate = (Math.cos(a) * rx).toFixed(1) + 'px ' + (Math.sin(a) * ry).toFixed(1) + 'px';
+        el.style.scale = (minScale + spanScale * depth).toFixed(3);
+        el.style.opacity = (minAlpha + spanAlpha * depth).toFixed(3);
+        el.style.zIndex = String(10 + Math.round(depth * 20));
+        if (depth > nearest) { nearest = depth; front = i; }
+      }
+      return front;
+    }
+
+    function paint(i) {
+      var n = String(i + 1);
+      $('.cf__avatar', card).setAttribute('data-i18n', 'cf.d' + n + 'Initial');
+      $('.cf__name', card).setAttribute('data-i18n', 'cf.d' + n + 'Name');
+      $('.cf__spec', card).setAttribute('data-i18n', 'cf.d' + n + 'Spec');
+      $('[data-cf-clinic]', card).setAttribute('data-i18n', 'cf.d' + n + 'Clinic');
+      $('[data-cf-slot]', card).setAttribute('data-i18n', 'cf.d' + n + 'Slot');
+      applyI18n(card);
+    }
+
+    function feature(i) {
+      var first = active < 0;
+      active = i;
+      docs.forEach(function (d, k) { d.classList.toggle('is-active', k === i); });
+      if (first || reduceMotion.matches) { paint(i); return; }
+      card.classList.add('is-swapping');
+      window.clearTimeout(swap);
+      swap = window.setTimeout(function () {
+        paint(active);
+        card.classList.remove('is-swapping');
+      }, 220);
+    }
+
+    function draw() {
+      place(chips, ECO_R, ECO_TURN, -1, Math.PI / 2 + Math.PI / 5, 0.78, 0.22, 0.20, 0.30);
+      var front = place(docs, DOC_R, DOC_TURN, 1, Math.PI / 2, 0.80, 0.24, 0.30, 0.62);
+      if (front !== active) feature(front);
+    }
+
+    function frame(now) {
+      if (!last) last = now;
+      elapsed += Math.min(now - last, 64);
+      last = now;
+      draw();
+      raf = window.requestAnimationFrame(frame);
+    }
+
+    function play() {
+      if (live || reduceMotion.matches || !w) return;
+      live = true; last = 0;
+      raf = window.requestAnimationFrame(frame);
+    }
+
+    function pause() {
+      live = false;
+      if (raf) window.cancelAnimationFrame(raf);
+      raf = 0;
+    }
+
+    function start() {
+      if (!measure()) return;
+      draw();
+      field.classList.add('is-ready');
+      if (!reduceMotion.matches) play();
+    }
+
+    start();
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.isIntersecting ? play() : pause(); });
+      }, { threshold: 0.05 });
+      io.observe(field);
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      document.hidden ? pause() : play();
+    });
+
+    var resizeTimer = null;
+    window.addEventListener('resize', function () {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(function () {
+        if (!measure()) {                       /* the tile collapsed — stand down */
+          pause();
+          field.classList.remove('is-ready');
+        } else if (!field.classList.contains('is-ready')) {
+          start();
+        } else if (!live) {
+          draw();
+        }
+      }, 160);
+    }, { passive: true });
+
+    document.addEventListener('emed:langchange', function () {
+      if (active >= 0) paint(active);
+    });
+  }
+
   /* ================================================ pointer-lit surfaces ==== */
   function initSpotlight() {
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
@@ -844,6 +998,7 @@
     initDrawer();
     initSearch();
     initEcosystem();
+    initCareField();
     initSpotlight();
     initAppShowcase();
     initProviderTabs();

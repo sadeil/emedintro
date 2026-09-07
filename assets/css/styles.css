@@ -826,6 +826,124 @@ html[lang="ar"] .body-sm{line-height:1.8}
 .cat--feature .cat__arrow{background:rgba(255,255,255,.14);color:#fff}
 .cat--feature:hover{border-color:transparent;box-shadow:var(--sh-xl)}
 
+/* The featured tile carries a living scene: a few doctors drifting on a slow
+   orbit inside the wider care ecosystem, with whichever one is nearest the
+   viewer promoted to the preview card. Desktop only — below 1024 the tile
+   collapses to a compact row and there is no room for it.                     */
+.cf{display:none}
+
+@media (min-width:1025px){
+  .cat--feature > .icon-tile,
+  .cat--feature .cat__body,
+  .cat--feature .cat__foot{position:relative;z-index:2}
+
+  .cf{
+    display:block;position:absolute;z-index:1;pointer-events:none;
+    inset-inline-end:clamp(14px,4%,40px);
+    top:clamp(10px,2.4%,26px);
+    width:clamp(320px,71%,420px);
+    height:clamp(240px,70%,340px);
+    opacity:0;transition:opacity 900ms var(--ease-out);
+  }
+  .cf.is-ready{opacity:.94}
+  .cat--feature:hover .cf.is-ready{opacity:1}
+
+  /* a soft pool of light the preview card sits in */
+  .cf::before{
+    content:"";position:absolute;left:50%;top:50%;width:68%;height:62%;
+    translate:-50% -50%;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(18,147,143,.26),transparent 72%);
+  }
+
+  /* both orbits are ellipses, so the field reads as a plane seen at an angle */
+  .cf__rings{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .cf__rings ellipse{fill:none;vector-effect:non-scaling-stroke}
+  .cf__ring--eco{stroke:rgba(168,189,210,.20);stroke-width:1;stroke-dasharray:2 7}
+  .cf__ring--doc{stroke:rgba(127,224,220,.22);stroke-width:1}
+
+  /* JS drives translate / scale / opacity / z-index on these two sets */
+  .cf__doc,.cf__chip{
+    position:absolute;left:50%;top:50%;
+    width:var(--sz);height:var(--sz);
+    margin-left:calc(var(--sz) / -2);margin-top:calc(var(--sz) / -2);
+    display:grid;place-items:center;
+  }
+
+  /* the wider ecosystem — quiet supporting context, never the subject */
+  .cf__chip{
+    --sz:28px;border-radius:9px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.13);
+    color:var(--text-on-dark-muted);
+  }
+  .cf__chip .icon{width:15px;height:15px;opacity:.9}
+
+  /* the doctors */
+  .cf__doc{--sz:46px}
+  .cf__doc::after{
+    content:"";position:absolute;inset:-7px;border-radius:20px;
+    border:1px solid rgba(127,224,220,.5);
+    opacity:0;scale:.88;
+    transition:opacity var(--dur-slow) var(--ease-out),scale var(--dur-slow) var(--ease-out);
+  }
+  .cf__doc.is-active::after{opacity:1;scale:1}
+
+  .cf__avatar{
+    display:grid;place-items:center;width:100%;height:100%;
+    border-radius:14px;
+    background:linear-gradient(150deg,rgba(127,224,220,.22),rgba(47,174,170,.10));
+    border:1px solid rgba(127,224,220,.26);
+    color:var(--brand-300);
+    font-size:.9375rem;font-weight:600;line-height:1;
+    box-shadow:0 8px 18px -10px rgba(0,0,0,.7);
+    transition:background var(--dur-slow) var(--ease-out),
+               border-color var(--dur-slow) var(--ease-out),
+               box-shadow var(--dur-slow) var(--ease-out),
+               color var(--dur-slow) var(--ease-out);
+  }
+  .cf__doc.is-active .cf__avatar{
+    background:linear-gradient(150deg,rgba(127,224,220,.34),rgba(47,174,170,.18));
+    border-color:rgba(127,224,220,.62);
+    color:#EAFBFA;
+    box-shadow:0 14px 28px -10px rgba(0,0,0,.75),0 0 0 5px rgba(127,224,220,.07);
+  }
+
+  /* the featured doctor, and the clinic they practise at */
+  .cf__card{
+    position:absolute;left:50%;top:50%;translate:-50% -50%;z-index:40;
+    width:clamp(170px,54%,228px);
+    display:grid;gap:9px;padding:12px 13px;
+    border-radius:16px;
+    background:linear-gradient(158deg,rgba(12,40,70,.94),rgba(7,27,51,.9));
+    border:1px solid rgba(127,224,220,.20);
+    box-shadow:0 20px 44px -14px rgba(2,10,20,.75),inset 0 1px 0 rgba(255,255,255,.07);
+    transition:opacity 220ms var(--ease),translate 220ms var(--ease);
+  }
+  .cf__card.is-swapping{opacity:0;translate:-50% calc(-50% + 6px)}
+  .cf__id{display:grid;grid-template-columns:36px minmax(0,1fr);gap:9px;align-items:center}
+  .cf__id .cf__avatar{width:36px;height:36px;border-radius:12px}
+  .cf__meta{display:grid;gap:2px;min-width:0}
+  .cf__name{
+    font-size:.8125rem;font-weight:600;color:#fff;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .cf__spec{
+    font-size:.6875rem;color:var(--text-on-dark-muted);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .cf__clinic{
+    display:flex;align-items:center;gap:5px;min-width:0;
+    padding-top:8px;border-top:1px solid rgba(255,255,255,.09);
+    font-size:.6875rem;color:var(--text-on-dark-muted);white-space:nowrap;
+  }
+  .cf__clinic .icon{width:13px;height:13px;color:var(--brand-300);flex:none}
+  .cf__clinic > span{overflow:hidden;text-overflow:ellipsis}
+  .cf__when{
+    margin-inline-start:auto;flex:none;
+    display:inline-flex;align-items:center;gap:3px;color:var(--brand-300);
+  }
+}
+
 /* wide tiles run horizontally instead of stacking */
 .cat--wide,.cat--cta{
   grid-template-rows:auto;

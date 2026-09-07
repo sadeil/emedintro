@@ -1369,7 +1369,9 @@ html[lang="ar"] .body-sm{line-height:1.8}
 }
 .value-list strong{color:var(--text-primary);font-weight:600}
 .value-list .icon{width:18px;height:18px;color:var(--brand-600);margin-top:5px}
-.providers__cta{display:flex;flex-wrap:wrap;gap:var(--s-3);padding-top:var(--s-2)}
+/* a single primary action, with its supporting line stacked above it */
+.providers__cta{display:grid;justify-items:start;gap:var(--s-4);padding-top:var(--s-2)}
+.providers__cta-note{max-width:48ch;color:var(--text-secondary)}
 
 .join-steps{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));

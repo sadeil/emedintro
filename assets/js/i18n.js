@@ -199,9 +199,8 @@
     'prov.title': 'كن جزءاً من المنظومة التي يبحث المرضى داخلها',
     'prov.lead': 'من طبيب يعمل بمفرده إلى مستشفى بعدة أقسام — يمنحك eMED ملفاً رقمياً كاملاً وإدارة لخدماتك وأوقات الإتاحة، ويصلك بمستخدمي المنظومة.',
     'prov.typeLabel': 'اختر نوع مقدم الخدمة',
-    'prov.join': 'انضم إلى eMED',
-    'prov.portal': 'الدخول إلى بوابة مقدمي الخدمات',
-    'prov.existing': 'لديك حساب بالفعل؟',
+    'prov.join': 'ابدأ طلب الانضمام',
+    'prov.joinNote': 'أرسل معلوماتك الأساسية وسيتواصل معك فريق eMED لاستكمال خطوات الانضمام.',
     'prov.portalPreview': 'معاينة بوابة مقدمي الخدمات',
 
     'prov.doctor': 'طبيب',
@@ -571,9 +570,8 @@
     'prov.title': 'Be part of the ecosystem patients search inside',
     'prov.lead': 'From a solo doctor to a hospital with several departments — eMED gives you a complete digital profile, control of your services and availability, and a connection to the people using the ecosystem.',
     'prov.typeLabel': 'Choose a provider type',
-    'prov.join': 'Join eMED',
-    'prov.portal': 'Sign in to the provider portal',
-    'prov.existing': 'Already have an account?',
+    'prov.join': 'Start a join request',
+    'prov.joinNote': 'Send your core details and the eMED team will get in touch to complete the join steps.',
     'prov.portalPreview': 'Provider portal preview',
 
     'prov.doctor': 'Doctor',

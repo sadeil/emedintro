@@ -198,6 +198,7 @@
         <span data-i18n="nav.lang">EN</span>
       </button>
       <!-- TODO: point at the live provider portal URL. -->
+      <!-- TODO: point at the real provider portal URL. -->
       <a class="btn btn--ghost btn--sm btn--portal" href="#providers" data-i18n="nav.portal">بوابة مقدمي الخدمات</a>
       <a class="btn btn--primary btn--sm" href="#app" data-i18n="nav.download">حمّل التطبيق</a>
       <button class="nav-toggle" id="navToggle" type="button"
@@ -1037,10 +1038,12 @@
           </ul>
         </div>
 
+        <!-- One journey only: this section speaks to prospective providers.
+             Providers who already have an account reach the portal from the
+             header, so the two paths never compete here. -->
         <div class="providers__cta">
-          <!-- TODO: point the portal button at the real provider portal URL. -->
-          <a class="btn btn--primary" href="join.html"><span data-i18n="prov.join">انضم إلى eMED</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          <a class="btn btn--outline" href="#support"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg><span data-i18n="prov.portal">الدخول إلى بوابة مقدمي الخدمات</span></a>
+          <p class="body-sm providers__cta-note" data-i18n="prov.joinNote">أرسل معلوماتك الأساسية وسيتواصل معك فريق eMED لاستكمال خطوات الانضمام.</p>
+          <a class="btn btn--primary" href="join.html"><span data-i18n="prov.join">ابدأ طلب الانضمام</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
         </div>
       </div>
 

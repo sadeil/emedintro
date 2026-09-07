@@ -57,13 +57,17 @@
     html.setAttribute('lang', lang);
     html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
 
-    document.title = t('meta.title');
+    /* Sub-pages declare their own keys on <html>; the homepage uses meta.*  */
+    var titleKey = html.getAttribute('data-title-key') || 'meta.title';
+    var descKey = html.getAttribute('data-desc-key') || 'meta.description';
+
+    document.title = t(titleKey);
     var desc = $('meta[name="description"]');
-    if (desc) desc.setAttribute('content', t('meta.description'));
+    if (desc) desc.setAttribute('content', t(descKey));
     var ogT = $('meta[property="og:title"]');
-    if (ogT) ogT.setAttribute('content', t('meta.title'));
+    if (ogT) ogT.setAttribute('content', t(titleKey));
     var ogD = $('meta[property="og:description"]');
-    if (ogD) ogD.setAttribute('content', t('meta.description'));
+    if (ogD) ogD.setAttribute('content', t(descKey));
     var ogL = $('meta[property="og:locale"]');
     if (ogL) ogL.setAttribute('content', lang === 'ar' ? 'ar_AR' : 'en_US');
 
@@ -822,6 +826,16 @@
       if (a) e.preventDefault();
     });
   }
+
+  /* ========================================================= public API ==== */
+  /* The only surface other page scripts use (join.js). Deliberately tiny:
+     read the active language, translate a key, re-apply keys to new nodes. */
+  window.EMED = {
+    t: t,
+    applyI18n: applyI18n,
+    getLang: function () { return lang; },
+    setLanguage: setLanguage
+  };
 
   /* =============================================================== boot ==== */
   function boot() {

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-title-key="j.meta.title" data-desc-key="j.meta.desc">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071B33">
+
+<title>انضم إلى منظومة eMED الصحية — طلب انضمام مقدمي الرعاية</title>
+<meta name="description" content="زوّدنا بالمعلومات الأساسية عن منشأتك وموقعها ووسيلة التواصل معك، وسيتولى فريق eMED مراجعة الطلب واستكمال خطوات الانضمام.">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://sadeil.github.io/emedintro/join.html">
+<meta property="og:url" content="https://sadeil.github.io/emedintro/join.html">
+<link rel="alternate" hreflang="ar" href="./join.html">
+<link rel="alternate" hreflang="en" href="./join.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="./join.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="eMED">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="انضم إلى منظومة eMED الصحية">
+<meta property="og:description" content="طلب انضمام موجز لمقدمي الرعاية الصحية: الأطباء والمستشفيات والعيادات والصيدليات والمختبرات ومراكز الأشعة.">
+<meta property="og:image" content="https://sadeil.github.io/emedintro/assets/img/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- the map fetches raster tiles from here; warm the connection early -->
+<link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"></noscript>
+
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/join.css">
+</head>
+<body class="join-body">
+
+<a class="skip-link" href="#main" data-i18n="nav.skip">تخطَّ إلى المحتوى الرئيسي</a>
+
+<!-- ===================================================================== -->
+<!-- Icon sprite — the subset this page uses, same drawing rules as index.  -->
+<!-- 24px grid, 1.6 stroke, round caps. No emoji.                           -->
+<!-- ===================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M4.6 3h2.6M12.8 3h2.6"/><path d="M10 12.4V15a5 5 0 0 0 10 0v-1.6"/><circle cx="20" cy="10.6" r="2.2"/></symbol>
+  <symbol id="i-hospital" viewBox="0 0 24 24"><path d="M4 21V9.4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1V21"/><path d="M9 8.4V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3.4"/><path d="M12 12v5M9.5 14.5h5"/><path d="M2.6 21h18.8"/></symbol>
+  <symbol id="i-clinic" viewBox="0 0 24 24"><path d="M3 21V5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v16"/><path d="M12 21V11h8a1 1 0 0 1 1 1v9"/><path d="M2.4 21h19.2"/><path d="M6 8h2M6 12h2M6 16h2M16 15h2"/></symbol>
+  <symbol id="i-pharmacy" viewBox="0 0 24 24"><path d="M9.4 3h5.2a.6.6 0 0 1 .6.6V9h5.4a.6.6 0 0 1 .6.6v4.8a.6.6 0 0 1-.6.6H15.2v5.4a.6.6 0 0 1-.6.6H9.4a.6.6 0 0 1-.6-.6V15H3.4a.6.6 0 0 1-.6-.6V9.6A.6.6 0 0 1 3.4 9h5.4V3.6a.6.6 0 0 1 .6-.6Z"/></symbol>
+  <symbol id="i-lab" viewBox="0 0 24 24"><path d="M9 3h6"/><path d="M10 3v6.3L4.7 18a2 2 0 0 0 1.7 3h11.2a2 2 0 0 0 1.7-3L14 9.3V3"/><path d="M7.6 15.2h8.8"/></symbol>
+  <symbol id="i-imaging" viewBox="0 0 24 24"><path d="M4 8.5V6a2 2 0 0 1 2-2h2.5M15.5 4H18a2 2 0 0 1 2 2v2.5M20 15.5V18a2 2 0 0 1-2 2h-2.5M8.5 20H6a2 2 0 0 1-2-2v-2.5"/><path d="M12 8v8"/><path d="M9.4 10.4c1.6 1 3.6 1 5.2 0M9.4 13.9c1.6-1 3.6-1 5.2 0"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-5.9 7-11.4a7 7 0 1 0-14 0c0 5.5 7 11.4 7 11.4Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-crosshair" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.6 4.6 4.6L19 7.8"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15.4 15.4 0 0 1 0 18 15.4 15.4 0 0 1 0-18Z"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.4"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.6 21.2 20H2.8Z"/><path d="M12 9.6v4.6"/><circle cx="12" cy="17.2" r=".95" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11.4a8 8 0 1 0-.7 4.6"/><path d="M20.4 4.6v6h-6"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4.2L19 9.2a2.1 2.1 0 0 0-3-3L5.2 17Z"/><path d="m14.6 7.6 2.8 2.8"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.4"/><circle cx="8.6" cy="10" r="1.7"/><path d="m3.6 17.4 4.8-4.4 3.4 3 3.2-2.8 5.4 4.6"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8.6A2 2 0 0 1 5 6.6h2.2l1.3-2.2h7l1.3 2.2H19a2 2 0 0 1 2 2v8.8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="3.6"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.6 6.6h14.8"/><path d="M9.2 6.6V4.8a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1v1.8"/><path d="M6.4 6.6 7.2 20a1 1 0 0 0 1 1h7.6a1 1 0 0 0 1-1l.8-13.4"/><path d="M10.4 10.4v6.4M13.6 10.4v6.4"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10.4 13.6a3.6 3.6 0 0 0 5.4.4l2.6-2.6a3.7 3.7 0 0 0-5.2-5.2l-1.5 1.5"/><path d="M13.6 10.4a3.6 3.6 0 0 0-5.4-.4l-2.6 2.6a3.7 3.7 0 0 0 5.2 5.2l1.5-1.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.2 3.6h3l1.6 4-2 1.4a12.4 12.4 0 0 0 6.2 6.2l1.4-2 4 1.6v3a1.8 1.8 0 0 1-2 1.8A16.4 16.4 0 0 1 4.4 5.6a1.8 1.8 0 0 1 1.8-2Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.6"/><path d="m3.8 6.6 8.2 5.9 8.2-5.9"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.6 20.6a7.4 7.4 0 0 1 14.8 0"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.6"/><path d="M2.6 20.4a6.4 6.4 0 0 1 12.8 0"/><path d="M15.6 5.2a3.4 3.4 0 0 1 0 6.6M17.2 20.4a6.6 6.6 0 0 0-1.4-4"/></symbol>
+  <symbol id="i-badge-check" viewBox="0 0 24 24"><path d="m12 2.6 2.3 1.7 2.9-.3 1.1 2.7 2.6 1.3-.8 2.9.8 2.9-2.6 1.3-1.1 2.7-2.9-.3L12 21.4l-2.3-1.9-2.9.3-1.1-2.7-2.6-1.3.8-2.9-.8-2.9L5.7 8.7l1.1-2.7 2.9.3Z"/><path d="m9.4 12.1 1.9 1.9 3.5-3.7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.6"/><circle cx="5" cy="19" r="2.6"/><circle cx="19" cy="19" r="2.6"/><path d="M12 7.6v3.6M11 11.6 6.4 16.6M13 11.6l4.6 5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 4.8-9 4.8-9-4.8Z"/><path d="m3 13 9 4.8 9-4.8"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.4" y="10" width="15.2" height="11" rx="2.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/><path d="M10 21v-3h4v3"/></symbol>
+</defs></svg>
+
+<!-- ===================================================================== -->
+<!-- Header — a focused task header: identity, the way back, language.      -->
+<!-- ===================================================================== -->
+<header class="site-header join-header" id="siteHeader">
+  <div class="site-header__inner join-header__inner container-wide">
+
+    <a class="logo" href="index.html" aria-label="eMED">
+      <img src="assets/img/emed-logo.svg" alt="" width="1756" height="447" aria-hidden="true" fetchpriority="high">
+    </a>
+
+    <div class="site-header__actions">
+      <button class="lang-toggle" id="langToggle" type="button"
+              aria-label="Switch to English — التبديل إلى الإنجليزية"
+              data-i18n-attr="aria-label:nav.langAria">
+        <svg class="icon" aria-hidden="true"><use href="#i-globe"></use></svg>
+        <span data-i18n="nav.lang">EN</span>
+      </button>
+      <a class="btn btn--ghost btn--sm join-header__back" href="index.html">
+        <svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg>
+        <span data-i18n="j.nav.back">العودة للرئيسية</span>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<main id="main" class="join">
+  <div class="join__grid container-wide">
+
+    <!-- ================================================================= -->
+    <!-- The form column                                                    -->
+    <!-- ================================================================= -->
+    <div class="join__col">
+
+      <div class="join__top">
+        <div class="join__intro">
+          <h1 class="join__title" data-i18n="j.hero.title">انضم إلى منظومة eMED الصحية</h1>
+          <p class="lead join__lead" data-i18n="j.hero.lead">زوّدنا بالمعلومات الأساسية، وسيتواصل معك فريق eMED لاستكمال خطوات الانضمام.</p>
+
+          <div class="join__meta">
+            <span class="join__meta-item">
+              <svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>
+              <span data-i18n="j.hero.time">دقيقتان تقريباً</span>
+            </span>
+            <span class="join__meta-item">
+              <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+              <span data-i18n="j.hero.noAccount">لا حاجة لإنشاء حساب الآن</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Progress. Completed steps are real buttons — the reader can go
+             back to anything already finished, but never skip forward. -->
+        <nav class="jprog" aria-label="مراحل طلب الانضمام" data-i18n-attr="aria-label:j.step.aria">
+          <ol class="jprog__list" id="progList">
+            <li class="jprog__item is-current" data-step="1">
+              <button class="jprog__btn" type="button" data-goto="1" disabled>
+                <span class="jprog__dot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                <span class="jprog__label" data-i18n="j.step.type">نوع مقدم الخدمة</span>
+                <span class="sr-only" data-step-state></span>
+              </button>
+            </li>
+            <li class="jprog__item" data-step="2">
+              <button class="jprog__btn" type="button" data-goto="2" disabled>
+                <span class="jprog__dot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                <span class="jprog__label" data-i18n="j.step.info">المعلومات الأساسية</span>
+                <span class="sr-only" data-step-state></span>
+              </button>
+            </li>
+            <li class="jprog__item" data-step="3">
+              <button class="jprog__btn" type="button" data-goto="3" disabled>
+                <span class="jprog__dot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                <span class="jprog__label" data-i18n="j.step.location">الموقع</span>
+                <span class="sr-only" data-step-state></span>
+              </button>
+            </li>
+            <li class="jprog__item" data-step="4">
+              <button class="jprog__btn" type="button" data-goto="4" disabled>
+                <span class="jprog__dot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                <span class="jprog__label" data-i18n="j.step.review">المراجعة</span>
+                <span class="sr-only" data-step-state></span>
+              </button>
+            </li>
+          </ol>
+          <span class="jprog__rail" aria-hidden="true"><span class="jprog__fill" id="progFill"></span></span>
+        </nav>
+      </div>
+
+      <p class="sr-only" id="stepStatus" role="status" aria-live="polite"></p>
+
+      <form class="jform" id="joinForm" novalidate autocomplete="on"
+            aria-label="طلب الانضمام إلى eMED" data-i18n-attr="aria-label:j.nav.aria">
+
+        <!-- step 1 — provider type ------------------------------------- -->
+        <section class="jstep is-in" data-step="1" aria-labelledby="s1Title">
+          <header class="jstep__head">
+            <h2 class="jstep__title" id="s1Title" tabindex="-1" data-i18n="j.type.title">كيف تقدّم خدماتك الصحية؟</h2>
+            <p class="jstep__lead" data-i18n="j.type.lead">اختر الخيار الذي يصفك، وسنعرض لك فقط المعلومات التي نحتاجها.</p>
+          </header>
+
+          <fieldset class="jtypes" id="typeGroup">
+            <legend class="sr-only" data-i18n="j.type.title">كيف تقدّم خدماتك الصحية؟</legend>
+            <!-- rendered by join.js so the type list stays a single source -->
+          </fieldset>
+          <p class="jfield__error" id="typeError" hidden></p>
+        </section>
+
+        <!-- step 2 — details ------------------------------------------- -->
+        <section class="jstep" data-step="2" aria-labelledby="s2Title" hidden>
+          <header class="jstep__head">
+            <h2 class="jstep__title" id="s2Title" tabindex="-1" data-i18n="j.s2.doctor">أخبرنا عنك وعن عيادتك</h2>
+            <p class="jstep__lead" id="s2Lead" data-i18n="j.s2.lead">لن نطلب أكثر مما نحتاجه لبدء انضمامك.</p>
+          </header>
+          <div class="jgroups" id="stepFields"></div>
+        </section>
+
+        <!-- step 3 — location ------------------------------------------ -->
+        <section class="jstep" data-step="3" aria-labelledby="s3Title" hidden>
+          <header class="jstep__head">
+            <h2 class="jstep__title" id="s3Title" tabindex="-1" data-i18n="j.loc.title">أين تقدّم رعايتك؟</h2>
+            <p class="jstep__lead" id="s3Lead" data-i18n="j.loc.lead">الموقع الدقيق هو ما يجعل المرضى يجدونك على خريطة eMED.</p>
+          </header>
+
+          <div class="jgroup">
+            <div class="jgrid" id="locFields"></div>
+          </div>
+
+          <div class="jgroup jgroup--map">
+            <div class="jgroup__head">
+              <span class="jgroup__icon" aria-hidden="true"><svg class="icon"><use href="#i-pin"></use></svg></span>
+              <div>
+                <h3 class="jgroup__title" data-i18n="j.loc.mapTitle">حدّد موقعك على الخريطة</h3>
+                <p class="jgroup__note" data-i18n="j.loc.mapHint">حرّك الخريطة حتى يستقر الدبوس على مدخل المكان، ثم أكّد.</p>
+              </div>
+            </div>
+
+            <div class="jmap" id="mapRoot">
+              <div class="jmap__viewport" id="mapViewport" role="application" tabindex="0"
+                   aria-label="حدّد موقعك على الخريطة" data-i18n-attr="aria-label:j.loc.mapTitle">
+                <div class="jmap__layer" id="mapLayer"></div>
+              </div>
+
+              <div class="jmap__pin" id="mapPin" aria-hidden="true">
+                <span class="jmap__pin-shadow"></span>
+                <svg class="jmap__pin-mark" viewBox="0 0 32 44" aria-hidden="true">
+                  <path d="M16 43s13-11.6 13-25A13 13 0 1 0 3 18c0 13.4 13 25 13 25Z"/>
+                  <circle cx="16" cy="17.4" r="5.2"/>
+                </svg>
+              </div>
+
+              <p class="jmap__gesture" id="mapGesture" aria-hidden="true"></p>
+
+              <div class="jmap__search">
+                <label class="sr-only" for="mapSearch" data-i18n="j.loc.search">ابحث عن مكان</label>
+                <div class="jmap__search-box">
+                  <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                  <input class="jmap__search-input" id="mapSearch" type="search" autocomplete="off"
+                         role="combobox" aria-expanded="false" aria-controls="mapResults" aria-autocomplete="list"
+                         placeholder="اسم المكان أو الشارع" data-i18n-attr="placeholder:j.loc.searchPlaceholder">
+                </div>
+                <ul class="jmap__results" id="mapResults" role="listbox" hidden
+                    aria-label="ابحث عن مكان" data-i18n-attr="aria-label:j.loc.search"></ul>
+              </div>
+
+              <div class="jmap__controls">
+                <button class="jmap__btn" id="mapLocate" type="button"
+                        aria-label="استخدام موقعي الحالي" data-i18n-attr="aria-label:j.loc.locate">
+                  <svg class="icon" aria-hidden="true"><use href="#i-crosshair"></use></svg>
+                </button>
+                <span class="jmap__zoom">
+                  <button class="jmap__btn" id="mapZoomIn" type="button"
+                          aria-label="تقريب" data-i18n-attr="aria-label:j.loc.zoomIn">
+                    <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                  </button>
+                  <button class="jmap__btn" id="mapZoomOut" type="button"
+                          aria-label="إبعاد" data-i18n-attr="aria-label:j.loc.zoomOut">
+                    <svg class="icon" aria-hidden="true"><use href="#i-minus"></use></svg>
+                  </button>
+                </span>
+              </div>
+
+              <p class="jmap__attr" data-i18n="j.loc.attribution">خرائط: OpenStreetMap</p>
+
+              <div class="jmap__state" id="mapLoading">
+                <span class="jmap__spinner" aria-hidden="true"></span>
+                <p data-i18n="j.loc.loading">جاري تحميل الخريطة…</p>
+              </div>
+
+              <div class="jmap__state jmap__state--error" id="mapError" hidden>
+                <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+                <p class="jmap__state-title" data-i18n="j.loc.unavailable">تعذّر تحميل الخريطة</p>
+                <p class="jmap__state-note" data-i18n="j.loc.unavailableNote">تحقّق من الاتصال وحاول مرة أخرى، أو استخدم موقعك الحالي لتحديد المكان.</p>
+                <div class="jmap__state-actions">
+                  <button class="btn btn--outline btn--sm" id="mapRetry" type="button">
+                    <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+                    <span data-i18n="j.loc.retry">إعادة المحاولة</span>
+                  </button>
+                  <button class="btn btn--ghost btn--sm" id="mapLocateAlt" type="button">
+                    <svg class="icon" aria-hidden="true"><use href="#i-crosshair"></use></svg>
+                    <span data-i18n="j.loc.locate">استخدام موقعي الحالي</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p class="jmap__hint" id="mapHint" role="status" aria-live="polite"></p>
+
+            <div class="jmap__confirm">
+              <button class="btn btn--navy jmap__confirm-btn" id="mapConfirm" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+                <span id="mapConfirmLabel" data-i18n="j.loc.confirm">تأكيد هذا الموقع</span>
+              </button>
+
+              <p class="jmap__confirmed" id="mapConfirmed" hidden>
+                <span class="jmap__confirmed-mark" aria-hidden="true"><svg class="icon"><use href="#i-check"></use></svg></span>
+                <span class="jmap__confirmed-text">
+                  <strong data-i18n="j.loc.confirmed">تم تحديد موقعك</strong>
+                  <span class="jmap__confirmed-note" id="mapConfirmedNote" data-i18n="j.loc.confirmedNote">يمكنك تحريك الخريطة وإعادة التأكيد في أي وقت.</span>
+                </span>
+              </p>
+            </div>
+            <p class="jfield__error" id="mapErrorMsg" hidden></p>
+          </div>
+        </section>
+
+        <!-- step 4 — review -------------------------------------------- -->
+        <section class="jstep" data-step="4" aria-labelledby="s4Title" hidden>
+          <header class="jstep__head">
+            <h2 class="jstep__title" id="s4Title" tabindex="-1" data-i18n="j.rev.title">راجع معلوماتك قبل الإرسال</h2>
+            <p class="jstep__lead" data-i18n="j.rev.lead">تأكّد من صحة ما أدخلته — يمكنك تعديل أي بند مباشرة.</p>
+          </header>
+
+          <div class="jreview" id="reviewBody"></div>
+
+          <div class="jalert" id="submitError" role="alert" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+            <div>
+              <p class="jalert__title" data-i18n="j.fail.title">تعذر إرسال طلبك حالياً</p>
+              <p class="jalert__body" data-i18n="j.fail.body">معلوماتك محفوظة كما هي. حاول مرة أخرى بعد قليل.</p>
+            </div>
+          </div>
+
+          <p class="jconsent" data-i18n="j.rev.consent">بإرسال طلبك أنت توافق على تواصل فريق eMED معك بشأنه.</p>
+        </section>
+
+        <!-- actions ------------------------------------------------------ -->
+        <div class="jactions" id="formActions">
+          <button class="btn btn--ghost jactions__back" id="btnBack" type="button" hidden>
+            <svg class="icon icon-arrow jactions__back-icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            <span data-i18n="j.back">رجوع</span>
+          </button>
+          <button class="btn btn--primary btn--lg jactions__next" id="btnNext" type="button">
+            <span id="btnNextLabel" data-i18n="j.next">متابعة</span>
+            <svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </button>
+          <button class="btn btn--primary btn--lg jactions__next" id="btnSubmit" type="submit" hidden>
+            <span class="jactions__spinner" aria-hidden="true"></span>
+            <span id="btnSubmitLabel" data-i18n="j.submit">أرسل طلبك</span>
+            <svg class="icon icon-arrow jactions__submit-icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- success --------------------------------------------------------- -->
+      <section class="jdone" id="successPanel" aria-labelledby="doneTitle" hidden>
+        <span class="jdone__mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><circle class="jdone__ring" cx="32" cy="32" r="27"/><path class="jdone__tick" d="m20 33.4 8.2 8.2L44 25.6"/></svg>
+        </span>
+        <h2 class="jdone__title" id="doneTitle" tabindex="-1" data-i18n="j.ok.title">تم استلام طلبك بنجاح</h2>
+        <p class="lead jdone__lead" data-i18n="j.ok.lead">سيراجع فريق eMED معلوماتك ويتواصل معك لاستكمال خطوات الانضمام.</p>
+
+        <p class="jdone__ref" id="doneRef" hidden>
+          <span data-i18n="j.ok.ref">رقم الطلب</span>
+          <strong id="doneRefValue"></strong>
+        </p>
+
+        <div class="jafter jafter--done">
+          <h3 class="jafter__head" data-i18n="j.after.title">ماذا بعد؟</h3>
+          <ol class="jafter__list">
+            <li class="jafter__item"><span class="jafter__num" aria-hidden="true">1</span><span data-i18n="j.after.1">نستلم طلبك</span></li>
+            <li class="jafter__item"><span class="jafter__num" aria-hidden="true">2</span><span data-i18n="j.after.2">نراجع المعلومات ونتواصل معك</span></li>
+            <li class="jafter__item"><span class="jafter__num" aria-hidden="true">3</span><span data-i18n="j.after.3">نستكمل انضمامك إلى eMED</span></li>
+          </ol>
+        </div>
+
+        <p class="jdone__note">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+          <span data-i18n="j.ok.mailNote">احتفظ ببريدك تحت نظرك — سنتواصل معك عبره.</span>
+        </p>
+
+        <div class="jdone__actions">
+          <a class="btn btn--primary" href="index.html">
+            <span data-i18n="j.ok.home">العودة للرئيسية</span>
+            <svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </a>
+          <a class="btn btn--outline" href="index.html#discover" data-i18n="j.ok.explore">استكشاف eMED</a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- The stage: what the provider is joining. Decorative in the a11y    -->
+    <!-- tree — every fact in it also exists in the form itself.            -->
+    <!-- ================================================================= -->
+    <!-- ================================================================= -->
+    <!-- The stage. It answers one question the form cannot: what am I       -->
+    <!-- joining? The preview card and the story mirror what has already     -->
+    <!-- been typed, so they stay out of the accessibility tree; the         -->
+    <!-- headline and "what happens next" do not, and are read normally.     -->
+    <!-- ================================================================= -->
+    <aside class="join__stage" id="joinStage">
+      <div class="jstage">
+        <div class="jstage__bg" aria-hidden="true"><span class="jstage__glow"></span><span class="jstage__grid"></span></div>
+
+        <div class="jstage__head">
+          <h2 class="jstage__title" id="stageTitle" data-i18n="j.stage.default">منشأتك تصبح جزءاً من منظومة eMED</h2>
+          <p class="jstage__sub" id="stageSub" data-i18n="j.stage.defaultSub">ملف واحد يعرّف المرضى بمن أنت وأين تقدّم رعايتك.</p>
+        </div>
+
+        <!-- the live provider profile: it assembles itself as the form is
+             filled in, and its shape follows the chosen provider type -->
+        <div class="jstage__preview" aria-hidden="true">
+          <div class="pcard" id="providerCard">
+            <div class="pcard__bar">
+              <span class="pcard__dots"><i></i><i></i><i></i></span>
+              <span class="pcard__url" data-i18n="j.card.preview">معاينة ملف مقدم الخدمة</span>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__id">
+                <span class="pcard__avatar" id="cardAvatar">
+                  <svg class="icon"><use href="#i-building"></use></svg>
+                </span>
+                <div class="pcard__names">
+                  <p class="pcard__name is-empty" id="cardName" data-i18n="j.card.default">اسم مقدم الخدمة</p>
+                  <p class="pcard__type" id="cardType"></p>
+                </div>
+                <span class="pcard__status"><span class="pcard__status-dot"></span><span data-i18n="j.card.status">قيد المراجعة</span></span>
+              </div>
+
+              <dl class="pcard__rows" id="cardRows"></dl>
+
+              <div class="pcard__map" id="cardMap">
+                <span class="pcard__map-grid"></span>
+                <span class="pcard__map-pin"><svg class="icon"><use href="#i-pin"></use></svg></span>
+                <span class="pcard__map-label" id="cardMapLabel" data-i18n="j.card.pendingLoc">بانتظار تحديد الموقع</span>
+              </div>
+
+              <!-- what a profile of this type carries -->
+              <ul class="pcard__caps" id="cardCaps"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- your facility → the eMED ecosystem → patients find you -->
+        <div class="jnet" aria-hidden="true">
+          <svg class="jnet__wires" viewBox="0 0 320 8" preserveAspectRatio="none">
+            <path class="jnet__wire" d="M4 4 H316" />
+            <path class="jnet__pulse" d="M4 4 H316" />
+          </svg>
+          <div class="jnet__node">
+            <span class="jnet__dot"><svg class="icon"><use href="#i-building"></use></svg></span>
+            <span class="jnet__label" id="netYou" data-i18n="j.net.facility">منشأتك</span>
+          </div>
+          <div class="jnet__node">
+            <span class="jnet__dot jnet__dot--core"><svg class="icon"><use href="#i-network"></use></svg></span>
+            <span class="jnet__label" data-i18n="j.net.core">منظومة eMED</span>
+          </div>
+          <div class="jnet__node">
+            <span class="jnet__dot"><svg class="icon"><use href="#i-users"></use></svg></span>
+            <span class="jnet__label" id="netPatients" data-i18n="j.net.discover">يكتشفك المرضى</span>
+          </div>
+        </div>
+
+        <div class="jafter">
+          <h3 class="jafter__head" data-i18n="j.after.title">ماذا بعد؟</h3>
+          <ol class="jafter__list">
+            <li class="jafter__item"><span class="jafter__num" aria-hidden="true">1</span><span data-i18n="j.after.1">نستلم طلبك</span></li>
+            <li class="jafter__item"><span class="jafter__num" aria-hidden="true">2</span><span data-i18n="j.after.2">نراجع المعلومات ونتواصل معك</span></li>
+            <li class="jafter__item"><span class="jafter__num" aria-hidden="true">3</span><span data-i18n="j.after.3">نستكمل انضمامك إلى eMED</span></li>
+          </ol>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- provider-type switch guard ------------------------------------------- -->
+<div class="jmodal" id="switchModal" hidden>
+  <div class="jmodal__scrim" id="switchScrim"></div>
+  <div class="jmodal__panel" role="dialog" aria-modal="true" aria-labelledby="swTitle" aria-describedby="swBody">
+    <span class="jmodal__icon" aria-hidden="true"><svg class="icon"><use href="#i-alert"></use></svg></span>
+    <h2 class="jmodal__title" id="swTitle" tabindex="-1" data-i18n="j.sw.title">تغيير نوع مقدم الخدمة؟</h2>
+    <p class="jmodal__body" id="swBody" data-i18n="j.sw.body">بعض ما أدخلته يخصّ النوع الحالي وسيُمسح. معلومات موقعك تبقى كما هي.</p>
+    <div class="jmodal__actions">
+      <button class="btn btn--ghost" id="swCancel" type="button" data-i18n="j.sw.cancel">إبقاء الاختيار</button>
+      <button class="btn btn--navy" id="swConfirm" type="button" data-i18n="j.sw.confirm">تغيير النوع</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/join-i18n.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/join.js"></script>
+</body>
+</html>

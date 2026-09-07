@@ -4,11 +4,15 @@ Arabic-first (RTL) public site for eMED, with a complete English (LTR) version.
 Static HTML/CSS/JS. **No build step, no dependencies, no framework.**
 
 ```
-index.html                     the page
+index.html                     the homepage
+join.html                      provider join request
 site.webmanifest
-assets/css/styles.css          design system + all section styles
-assets/js/i18n.js              every user-facing string, ar + en
-assets/js/app.js               behaviour (nav, search, tabs, reveal, i18n)
+assets/css/styles.css          design system + all homepage section styles
+assets/css/join.css            join page styles (same tokens, no new ones)
+assets/js/i18n.js              every homepage string, ar + en
+assets/js/join-i18n.js         every join page string, ar + en
+assets/js/app.js               shared behaviour (nav, search, tabs, reveal, i18n)
+assets/js/join.js              the join journey (steps, fields, map, submit)
 assets/img/                    logo lockups, app icons, OG card, store badges
 assets/brand/                  supplied logo artwork (source only — omit from the deploy bundle)
 .claude/launch.json            local preview config
@@ -39,6 +43,106 @@ python -m http.server 5173
 
 ---
 
+## The join page (`join.html`)
+
+A four-step request — **نوع مقدم الخدمة → المعلومات الأساسية → الموقع →
+المراجعة** — that collects the minimum the eMED team needs to identify a
+provider, find the facility and get in touch. Roughly a minute or two.
+
+**The copy speaks to the provider, not about them.** "أخبرنا عن عيادتك", not
+"بيانات العيادة"; "من يمكننا التواصل معه؟", not "جهة الاتصال"; "حدّد موقعك",
+not "يجب إدخال الموقع". Second person throughout, in both languages. eMED is
+a **منظومة** everywhere on this page, never a شبكة — keep that consistent if
+you add copy.
+
+**Choosing a type never moves the reader.** The Continue action does not exist
+until a choice is made; once one is, it appears and names the choice back
+("متابعة كطبيب"). The stepper is navigable backwards only: finished steps are
+real buttons, the current and unreached ones are disabled.
+
+It is **not** onboarding. It creates no account and asks for no credential.
+There is no username, password, licence number, national ID, tax or commercial
+registration, bank detail, certificate, CV, doctor roster, service catalogue,
+price, insurance contract or opening hour anywhere on it — and none should be
+added. Those belong to whatever internal process follows approval.
+
+**Six provider types**, each with its own field set, all built from one schema
+in `join.js` §02 rather than six duplicated forms: doctor, hospital, clinic /
+medical centre, pharmacy, laboratory, imaging centre. Insurance companies and
+TPAs are not among them, matching the rest of the site. A doctor is always
+attached to a clinic — the clinic block is mandatory, and the page never asks
+whether one exists.
+
+**Shared shape.** `provider_type`, facility name / phone / email, contact
+person where the type has one, and a location for all six. Doctors add their
+own name, specialty and mobile plus the clinic; organisations add the contact
+person's name, role and phone. Optional everywhere: an official page or Google
+Maps link and one facility photo.
+
+**The stage** (`join.js` §11) is the dark panel beside the form — about 30% of
+the desktop width to the form's 70%. It is not decoration: it assembles a live
+profile preview as the form is filled in, and its shape follows the chosen
+type. A doctor gets a person-inside-a-clinic profile (name, specialty, the
+clinic as a row); the five organisation types get the facility itself. The
+capability chips under the preview, the three-beat story (منشأتك → منظومة eMED
+→ يكتشفك المرضى, or عيادتك → … → يصل إليك المرضى for a doctor) and the panel
+headline all change with the type. Below the desktop split the preview drops
+away and the panel becomes a short closing note under the form.
+
+Everything the chips name — departments, specialties, services,
+opening hours, availability — is a capability eMED already has. Do not add one
+that isn't.
+
+**Location** is governorate → city/area → street description → a pin the
+provider confirms on a map. Coordinates are stored, never shown as latitude
+and longitude fields. The confirmed pin is required; moving the map afterwards
+asks for a fresh confirmation.
+
+**The map is hand-built** (`join.js` §12) — raster tiles, drag to pan, pinch /
+Ctrl+wheel / buttons to zoom, a search box, "use my location", and a fixed
+centre pin. No mapping library, so the site keeps its no-dependency rule. Two
+gestures are deliberately not hijacked: one finger scrolls the page (two move
+the map) and a bare wheel scrolls the page (Ctrl+wheel zooms). Both explain
+themselves with an overlay hint the first time they are tried.
+
+**State** lives in `sessionStorage` under `emed:join`, so going back a step,
+or reloading, keeps what was typed. It is cleared on success. The chosen photo
+is not stored — a file input cannot be repopulated from storage. Switching
+provider type only warns when the switch would actually drop something that
+was filled in; shared fields and the location always survive.
+
+**Validation** waits for the reader. Format errors appear on blur, "required"
+only when Continue is pressed, and any error clears as soon as the field is
+valid. Messages are plain Arabic sentences, associated with their field
+through `aria-describedby` / `aria-invalid`.
+
+### Join page TODOs
+
+| # | What | Where |
+|---|------|-------|
+| 1 | **Submit endpoint.** `ENDPOINT` is `null`, so the journey completes locally and the payload is built but not sent. Point it at the real join-request API; it posts `FormData` with a JSON `request` field and the optional `photo`. | `join.js` §13 |
+| 2 | **Request number.** The success state shows one *only* if the response carries `reference` or `request_number`. Nothing is invented — leave it that way. | `showSuccess()` |
+| 3 | **Tile provider.** `TILE_URL` uses OpenStreetMap's public tile server, which is fine for review but is not a production CDN and has a usage policy. Swap it for eMED's licensed provider and keep the attribution line honest. | `join.js` §12 |
+| 4 | **Geocoding.** Map search and the reverse-geocoded location label call Nominatim. Both fail quietly and neither is required to finish the form. Point them at eMED's own service. | `GEOCODE` / `REVERSE` |
+| 5 | **Coverage list.** `GOVERNORATES` carries the Palestinian governorates with a few areas and a map centre each. Confirm it with the product owner, or replace it wholesale if eMED launches elsewhere. `COUNTRIES` likewise sets the default dial code. | `join.js` §01 |
+| 6 | **Provider portal link.** There is deliberately none: an unavailable destination is not advertised during onboarding. When the portal ships, an "already on eMED?" exit can be added back to the hero. | — |
+| 7 | **Specialties.** The doctor combobox reads the specialties already in `EMED_I18N.suggestions` and accepts free text. Point it at the real specialty dataset when there is one. | `specialties()` |
+
+Append `?submit=fail` to the URL to exercise the failure state: the request is
+rejected, the entered data stays put, and the button offers to send again.
+
+### What the join page adds to `app.js`
+
+Two small, backwards-compatible hooks:
+
+- `window.EMED` — `t()`, `applyI18n()`, `getLang()`, `setLanguage()`. The only
+  surface `join.js` uses.
+- `<html data-title-key data-desc-key>` — a page may name its own keys for
+  `<title>` and the meta description. Without them the homepage's `meta.*`
+  keys are used exactly as before.
+
+---
+
 ## Before this goes live
 
 Everything below is deliberately a placeholder and is marked with a `TODO`
@@ -50,7 +154,7 @@ comment at the point of use.
 | 2 | **OG image as PNG.** Export `og-image.svg` at 1200×630 and repoint `og:image`; several crawlers do not rasterise SVG. The card already carries the real lockup. | `index.html` `<head>` |
 | 3 | **App Store / Google Play badges and links.** Current badges are correctly-proportioned placeholders — replace with the official artwork from Apple and Google. | `assets/img/badge-*.svg`, `.store-badge` hrefs |
 | 4 | **Download QR code** (desktop only block). | `.qr-block` |
-| 5 | **Provider portal URL** and **join form URL** — currently anchor to `#providers`. | header, providers section, footer, closing CTA |
+| 5 | **Provider portal URL** — still anchors to `#providers`. (The join CTAs now point at `join.html`.) | header, providers section, footer, closing CTA |
 | 6 | **Support channels** (email / contact / provider support). | `.support-card` |
 | 7 | **Privacy policy and terms pages** — the only two `href="#"` links on the page. | footer, legal column |
 | 8 | **Search results page.** The form calls `preventDefault()`; point it at the real `/search` route. | `initSearch()` in `app.js` |
@@ -73,7 +177,7 @@ swapped for `<img>` without touching anything else.
 ## Two rules the content follows
 
 **1 · Only real capabilities are described.** The copy covers: discovering
-providers, viewing a provider profile (branches, doctors, specialties,
+providers, viewing a provider profile (doctors, specialties,
 services, opening hours), booking and managing appointments in the app,
 managing family members, linking insurance details, seeing in-network
 providers, and the digital healthcare services eMED makes available.

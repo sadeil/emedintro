@@ -26,12 +26,15 @@
 
   /* ------------------------------------------------------------- 01 Data */
 
-  /* The six provider types this page accepts. Insurance companies and TPAs
-     are deliberately absent — they have their own entry points. */
+  /* The six provider types this page accepts. An individual doctor is not one
+     of them: a doctor practises inside a clinic or a medical centre, so the
+     facility joins and its doctors are listed under it. Ordered by scale —
+     clinic, centre, hospital — then the supporting services. Insurance
+     companies and TPAs are deliberately absent: separate entry points. */
   var TYPES = [
-    { id: 'doctor',   icon: 'i-stethoscope' },
-    { id: 'hospital', icon: 'i-hospital' },
     { id: 'clinic',   icon: 'i-clinic' },
+    { id: 'center',   icon: 'i-building' },
+    { id: 'hospital', icon: 'i-hospital' },
     { id: 'pharmacy', icon: 'i-pharmacy' },
     { id: 'lab',      icon: 'i-lab' },
     { id: 'imaging',  icon: 'i-imaging' }
@@ -141,7 +144,6 @@
     required: false, placeholderKey: 'j.p.link', hintKey: 'j.h.link', autocomplete: 'url'
   });
   var PHOTO_FIELD = f('photo', 'photo', 'j.f.photo', { required: false });
-  /* a doctor gives us their own address; a facility gives us the facility's */
   function emailField(labelKey) {
     return f('email', 'email', labelKey, {
       half: true, placeholderKey: 'j.p.email', hintKey: 'j.h.email', autocomplete: 'email'
@@ -161,19 +163,25 @@
              optional: true, fields: [LINK_FIELD, PHOTO_FIELD] };
   }
 
-  var SCHEMA = {
-    doctor: [
-      { key: 'doctor', titleKey: 'j.g.doctor', icon: 'i-user', fields: [
-        f('doctor_name', 'text', 'j.f.doctorName', { placeholderKey: 'j.p.doctorName', autocomplete: 'name' }),
-        f('specialty', 'combo', 'j.f.specialty', { placeholderKey: 'j.p.specialty', source: 'specialty', half: true }),
-        phoneField('doctor_phone', 'j.f.doctorPhone'),
-        emailField('j.f.email')
+  /* A clinic and a medical centre are the same form; only the word for the
+     place changes. They used to be one type with a radio asking which — the
+     type cards ask that now, so the question is not repeated here. */
+  function ambulatory(nameKey, iconId) {
+    return [
+      { key: 'facility', titleKey: 'j.g.facility', icon: iconId, fields: [
+        nameField('facility_name', nameKey),
+        phoneField('facility_phone', 'j.f.phone'),
+        emailField('j.f.facilityEmail')
       ] },
-      { key: 'clinic', titleKey: 'j.g.clinic', noteKey: 'j.g.clinicNote', icon: 'i-clinic', fields: [
-        nameField('facility_name', 'j.f.clinicName'),
-        phoneField('facility_phone', 'j.f.clinicPhone')
-      ] }
-    ],
+      { key: 'contact', titleKey: 'j.g.contact', noteKey: 'j.g.contactNote', icon: 'i-user', fields: [
+        f('contact_name', 'text', 'j.f.contactName', { half: true, placeholderKey: 'j.p.contactName', autocomplete: 'name' }),
+        phoneField('contact_phone', 'j.f.contactPhone')
+      ] },
+      extras()
+    ];
+  }
+
+  var SCHEMA = {
     hospital: [
       { key: 'facility', titleKey: 'j.g.facility', icon: 'i-hospital', fields: [
         nameField('facility_name', 'j.f.hospitalName'),
@@ -187,21 +195,8 @@
       ] },
       extras()
     ],
-    clinic: [
-      { key: 'facility', titleKey: 'j.g.facility', icon: 'i-clinic', fields: [
-        nameField('facility_name', 'j.f.centerName'),
-        f('facility_kind', 'radio', 'j.f.facilityKind', {
-          options: [{ v: 'clinic', k: 'j.f.kindClinic' }, { v: 'center', k: 'j.f.kindCenter' }]
-        }),
-        phoneField('facility_phone', 'j.f.phone'),
-        emailField('j.f.facilityEmail')
-      ] },
-      { key: 'contact', titleKey: 'j.g.contact', noteKey: 'j.g.contactNote', icon: 'i-user', fields: [
-        f('contact_name', 'text', 'j.f.contactName', { half: true, placeholderKey: 'j.p.contactName', autocomplete: 'name' }),
-        phoneField('contact_phone', 'j.f.contactPhone')
-      ] },
-      extras()
-    ],
+    clinic: ambulatory('j.f.clinicName', 'i-clinic'),
+    center: ambulatory('j.f.centerName', 'i-building'),
     pharmacy: [
       { key: 'facility', titleKey: 'j.g.facility', icon: 'i-pharmacy', fields: [
         nameField('facility_name', 'j.f.pharmacyName'),
@@ -911,9 +906,8 @@
       applyI18n(grid);
     }
     var lead = $('#s3Lead');
-    var key = state.type === 'doctor' ? 'j.loc.clinicLead' : 'j.loc.lead';
-    lead.setAttribute('data-i18n', key);
-    lead.textContent = t(key);
+    lead.setAttribute('data-i18n', 'j.loc.lead');
+    lead.textContent = t('j.loc.lead');
     ensureMap();
   }
 
@@ -992,9 +986,9 @@
      assembles changes shape. Nothing here claims a capability the product
      does not already have. */
   var STAGE = {
-    doctor:   { icon: 'i-stethoscope', caps: ['specialty', 'clinic', 'availability'] },
-    hospital: { icon: 'i-hospital',    caps: ['departments', 'services', 'hours'] },
     clinic:   { icon: 'i-clinic',      caps: ['specialties', 'services', 'hours'] },
+    center:   { icon: 'i-building',    caps: ['specialties', 'services', 'hours'] },
+    hospital: { icon: 'i-hospital',    caps: ['departments', 'services', 'hours'] },
     pharmacy: { icon: 'i-pharmacy',    caps: ['location', 'hours'] },
     lab:      { icon: 'i-lab',         caps: ['services', 'hours'] },
     imaging:  { icon: 'i-imaging',     caps: ['services', 'hours'] }
@@ -1019,11 +1013,8 @@
       use.setAttribute('href', '#' + ic);
     });
 
-    /* A doctor's profile is a person inside a clinic; every other type is the
-       facility itself. The preview follows that, rather than flattening all
-       six into one generic card. */
-    var isDoctor = type === 'doctor';
-    var name = ((isDoctor ? state.data.doctor_name : state.data.facility_name) || '').trim();
+    /* Every type is a facility now, so the card is always the place itself. */
+    var name = (state.data.facility_name || '').trim();
     var placeholder = type ? 'j.card.' + type : 'j.card.default';
 
     var nameEl = $('#cardName');
@@ -1031,9 +1022,8 @@
     nameEl.classList.toggle('is-empty', !name);
 
     var typeEl = $('#cardType');
-    var sub = isDoctor ? String(state.data.specialty || '').trim() : '';
-    setKeyed(typeEl, sub ? null : (type ? 'j.type.' + type : null), sub);
-    if (!type && !sub) typeEl.textContent = '';
+    setKeyed(typeEl, type ? 'j.type.' + type : null, '');
+    if (!type) typeEl.textContent = '';
 
     /* rows: only what has actually been typed */
     var rows = $('#cardRows');
@@ -1047,12 +1037,10 @@
       dd.textContent = value;
       rows.appendChild(dt); rows.appendChild(dd);
     }
-    if (isDoctor) addRow('j.card.clinicRow', state.data.facility_name, 'i-clinic');
-    else addRow('j.card.contact', state.data.contact_name, 'i-user');
+    addRow('j.card.contact', state.data.contact_name, 'i-user');
 
-    var phoneId = isDoctor ? 'doctor_phone' : 'facility_phone';
-    var phone = String(state.data[phoneId] || '').trim();
-    if (phone) addRow('j.card.phone', (state.data[phoneId + '_cc'] || '') + ' ' + phone, 'i-phone', true);
+    var phone = String(state.data.facility_phone || '').trim();
+    if (phone) addRow('j.card.phone', (state.data.facility_phone_cc || '') + ' ' + phone, 'i-phone', true);
 
     /* what a profile of this type carries */
     var caps = $('#cardCaps');
@@ -1070,9 +1058,8 @@
     cardMap.classList.toggle('is-set', !!(locBits.length || state.geo));
     cardMap.classList.toggle('is-pinned', !!state.geo);
 
-    /* the three-beat story reads differently for a doctor */
-    setKeyed($('#netYou'), isDoctor ? 'j.net.clinic' : 'j.net.facility');
-    setKeyed($('#netPatients'), isDoctor ? 'j.net.reach' : 'j.net.discover');
+    setKeyed($('#netYou'), 'j.net.facility');
+    setKeyed($('#netPatients'), 'j.net.discover');
 
     $('#joinStage').classList.toggle('has-type', !!type);
   }
@@ -1604,7 +1591,6 @@
       language: API.getLang(),
       facility: {
         name: state.data.facility_name || '',
-        kind: state.data.facility_kind || null,
         phone: phoneOf('facility_phone'),
         email: state.data.email || ''
       },
@@ -1624,15 +1610,6 @@
       official_url: state.data.official_url || '',
       has_photo: !!photoFile
     };
-    if (state.type === 'doctor') {
-      payload.doctor = {
-        name: state.data.doctor_name || '',
-        specialty: state.data.specialty || '',
-        phone: phoneOf('doctor_phone'),
-        email: state.data.email || ''
-      };
-      payload.contact = null;
-    }
     return payload;
   }
 

@@ -140,8 +140,10 @@
     return field;
   }
 
-  var LINK_FIELD = f('official_url', 'url', 'j.f.link', {
-    required: false, placeholderKey: 'j.p.link', hintKey: 'j.h.link', autocomplete: 'url'
+  /* One social page is all we ask for here — whichever platform the facility
+     actually keeps up to date. Its address is the map's job, not this field's. */
+  var SOCIAL_FIELD = f('social_url', 'url', 'j.f.social', {
+    required: false, placeholderKey: 'j.p.social', hintKey: 'j.h.social', autocomplete: 'url'
   });
   var PHOTO_FIELD = f('photo', 'photo', 'j.f.photo', { required: false });
   function emailField(labelKey) {
@@ -154,22 +156,24 @@
     if (opts) Object.keys(opts).forEach(function (k) { extra[k] = opts[k]; });
     return f(id, 'tel', labelKey, extra);
   }
-  function nameField(id, labelKey) {
-    return f(id, 'text', labelKey, { placeholderKey: 'j.p.name', autocomplete: 'organization' });
+  /* The placeholder carries the only guidance this field needs: a name shaped
+     the way we expect one, per type. Nothing sits above or below the input. */
+  function nameField(id, labelKey, placeholderKey) {
+    return f(id, 'text', labelKey, { placeholderKey: placeholderKey, autocomplete: 'organization' });
   }
 
   function extras() {
     return { key: 'extra', titleKey: 'j.g.extra', noteKey: 'j.g.extraNote', icon: 'i-layers',
-             optional: true, fields: [LINK_FIELD, PHOTO_FIELD] };
+             optional: true, fields: [SOCIAL_FIELD, PHOTO_FIELD] };
   }
 
   /* A clinic and a medical centre are the same form; only the word for the
      place changes. They used to be one type with a radio asking which — the
      type cards ask that now, so the question is not repeated here. */
-  function ambulatory(nameKey, iconId) {
+  function ambulatory(nameKey, namePlaceholderKey, iconId) {
     return [
       { key: 'facility', titleKey: 'j.g.facility', icon: iconId, fields: [
-        nameField('facility_name', nameKey),
+        nameField('facility_name', nameKey, namePlaceholderKey),
         phoneField('facility_phone', 'j.f.phone'),
         emailField('j.f.facilityEmail')
       ] },
@@ -184,7 +188,7 @@
   var SCHEMA = {
     hospital: [
       { key: 'facility', titleKey: 'j.g.facility', icon: 'i-hospital', fields: [
-        nameField('facility_name', 'j.f.hospitalName'),
+        nameField('facility_name', 'j.f.hospitalName', 'j.p.hospitalName'),
         phoneField('facility_phone', 'j.f.phone'),
         emailField('j.f.facilityEmail')
       ] },
@@ -195,11 +199,11 @@
       ] },
       extras()
     ],
-    clinic: ambulatory('j.f.clinicName', 'i-clinic'),
-    center: ambulatory('j.f.centerName', 'i-building'),
+    clinic: ambulatory('j.f.clinicName', 'j.p.clinicName', 'i-clinic'),
+    center: ambulatory('j.f.centerName', 'j.p.centerName', 'i-building'),
     pharmacy: [
       { key: 'facility', titleKey: 'j.g.facility', icon: 'i-pharmacy', fields: [
-        nameField('facility_name', 'j.f.pharmacyName'),
+        nameField('facility_name', 'j.f.pharmacyName', 'j.p.pharmacyName'),
         phoneField('facility_phone', 'j.f.pharmacyPhone'),
         emailField('j.f.facilityEmail')
       ] },
@@ -211,7 +215,7 @@
     ],
     lab: [
       { key: 'facility', titleKey: 'j.g.facility', icon: 'i-lab', fields: [
-        nameField('facility_name', 'j.f.labName'),
+        nameField('facility_name', 'j.f.labName', 'j.p.labName'),
         phoneField('facility_phone', 'j.f.phone'),
         emailField('j.f.facilityEmail')
       ] },
@@ -222,7 +226,7 @@
     ],
     imaging: [
       { key: 'facility', titleKey: 'j.g.facility', icon: 'i-imaging', fields: [
-        nameField('facility_name', 'j.f.imagingName'),
+        nameField('facility_name', 'j.f.imagingName', 'j.p.imagingName'),
         phoneField('facility_phone', 'j.f.phone'),
         emailField('j.f.facilityEmail')
       ] },
@@ -1607,7 +1611,7 @@
         lat: state.geo ? state.geo.lat : null,
         lng: state.geo ? state.geo.lng : null
       },
-      official_url: state.data.official_url || '',
+      social_url: state.data.social_url || '',
       has_photo: !!photoFile
     };
     return payload;

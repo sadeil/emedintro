@@ -314,14 +314,21 @@ html[lang="ar"] .join__title{letter-spacing:0}
              background var(--dur-fast) var(--ease);
 }
 .jinput::placeholder{color:var(--text-tertiary);font-weight:400}
+/* a web address is LTR data: left to itself in an RTL form the bidi algorithm
+   throws a trailing slash to the front of what was just typed */
+.jinput[type="url"]{direction:ltr;text-align:left}
 .jinput:hover{border-color:var(--border-strong)}
 .jinput:focus{outline:none;border-color:var(--brand-500);box-shadow:0 0 0 4px rgba(18,147,143,.14)}
 .jfield.is-invalid .jinput{border-color:var(--error);background:var(--error-surface)}
 .jfield.is-invalid .jinput:focus{box-shadow:0 0 0 4px rgba(179,38,30,.14)}
 
 /* ------------------------------------------------------- 07 Controls */
-/* phone: one control, two parts — the dial code never looks like a field */
+/* phone: one control, two parts — the dial code never looks like a field.
+   A phone number is read left to right in both languages, so the whole
+   control is laid out LTR: the dial code sits on the left and the digits
+   continue from it, in Arabic exactly as in English. */
 .jphone{
+  direction:ltr;
   display:grid;grid-template-columns:auto minmax(0,1fr);align-items:stretch;
   border:1px solid var(--border);border-radius:var(--r-md);
   background:var(--surface);
@@ -342,14 +349,12 @@ html[lang="ar"] .join__title{letter-spacing:0}
   background-repeat:no-repeat;background-size:14px;
   background-position:right 9px center;
 }
-[dir="ltr"] .jphone__cc{background-position:right 9px center}
 .jphone__cc:focus{outline:none}
 .jphone__cc:focus-visible{box-shadow:var(--focus-ring);border-radius:var(--r-sm)}
 .jphone__num{
-  border:0;background:none;direction:ltr;text-align:start;
+  border:0;background:none;direction:ltr;text-align:left;
   border-start-end-radius:var(--r-md);border-end-end-radius:var(--r-md);
 }
-[dir="rtl"] .jphone__num{text-align:right}
 .jphone__num:focus{box-shadow:none}
 
 /* select */

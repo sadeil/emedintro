@@ -76,8 +76,9 @@ whether one exists.
 **Shared shape.** `provider_type`, facility name / phone / email, contact
 person where the type has one, and a location for all six. Doctors add their
 own name, specialty and mobile plus the clinic; organisations add the contact
-person's name, role and phone. Optional everywhere: an official page or Google
-Maps link and one facility photo.
+person's name, role and phone. Optional everywhere: a link to one social media
+page (Facebook, LinkedIn, Instagram or another platform) and one facility
+photo.
 
 **The stage** (`join.js` §11) is the dark panel beside the form — about 30% of
 the desktop width to the form's 70%. It is not decoration: it assembles a live

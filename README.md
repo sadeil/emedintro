@@ -215,8 +215,8 @@ the header toggle, the drawer toggle, or `?lang=en`. The choice persists in
 alternates in `<head>`.
 
 Switching updates `lang`, `dir`, `<title>`, the meta description, OG tags, and
-every `data-i18n*` node — including content rendered at runtime (ecosystem
-captions, provider tab content, the app chip).
+every `data-i18n*` node — including content rendered at runtime (provider tab
+content, the app chip).
 
 Layout mirrors automatically because the CSS uses logical properties
 (`inset-inline-*`, `margin-inline`, `padding-inline`). Two things are mirrored
@@ -256,7 +256,7 @@ sites.
 
 ### Motion
 
-Reveal-on-scroll, the hero float/parallax, the ecosystem signal flow and the
+Reveal-on-scroll, the hero float/parallax, the discover care field and the
 app carousel are all gated on `prefers-reduced-motion`, which is honoured
 globally in §20 — reduced motion means the page renders fully and statically,
 never blank. The app carousel additionally pauses on hover, on focus, on
@@ -280,8 +280,8 @@ Semantic landmarks and a single `h1`; the drawer is a real focus-trapped
 `role="dialog"` with Escape-to-close and focus restoration; the search field is
 a proper `combobox` with `aria-activedescendant` and arrow/Enter/Escape keys;
 the app and provider tabs implement the tablist pattern with arrow keys that
-follow reading direction; the FAQ is a standard disclosure pattern; the
-ecosystem selection announces through a polite live region. Body text meets
+follow reading direction; the FAQ is a standard disclosure pattern. Body text
+meets
 WCAG AA against every surface it sits on. State is never signalled by colour
 alone — selected items also change weight, icon fill and `aria-*`.
 

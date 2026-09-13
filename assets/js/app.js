@@ -480,88 +480,6 @@
     document.addEventListener('emed:langchange', closeBox);
   }
 
-  /* ========================================================== ecosystem ==== */
-  function initEcosystem() {
-    var orbit = $('[data-eco-orbit]');
-    var caption = $('#ecoCaption');
-    if (!orbit || !caption) return;
-
-    var nodes = $$('.orbit__node', orbit);
-    var legend = $$('[data-eco-legend] .eco-legend__btn');
-    var lines = $$('.orbit__links line[data-link]');
-    var flow = $('.orbit__flow', orbit);
-    var capTitle = $('strong', caption);
-    var capText = $('span', caption);
-    var current = null;
-
-    function select(key, animate) {
-      if (key === current) return;
-      current = key;
-
-      nodes.concat(legend).forEach(function (btn) {
-        var on = btn.getAttribute('data-eco') === key;
-        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-        btn.classList.toggle('is-active', on);
-      });
-
-      var lit = null;
-      lines.forEach(function (line) {
-        var on = line.getAttribute('data-link') === key;
-        if (on) lit = line;
-        line.classList.toggle('is-lit', on);
-        line.classList.toggle('is-dim', !on);
-      });
-
-      /* the travelling signal moves to whichever link is selected */
-      if (flow && lit) {
-        ['x1', 'y1', 'x2', 'y2'].forEach(function (a) {
-          flow.setAttribute(a, lit.getAttribute(a));
-        });
-      }
-
-      function paint() {
-        capTitle.setAttribute('data-i18n', 'cat.' + key);
-        capText.setAttribute('data-i18n', 'eco.' + key + 'Cap');
-        applyI18n(caption);
-      }
-
-      if (animate && !reduceMotion.matches) {
-        caption.classList.add('is-swapping');
-        window.setTimeout(function () {
-          paint();
-          caption.classList.remove('is-swapping');
-        }, 170);
-      } else {
-        paint();
-      }
-    }
-
-    nodes.concat(legend).forEach(function (btn) {
-      btn.addEventListener('click', function () { select(btn.getAttribute('data-eco'), true); });
-    });
-
-    select('doctor', false);
-
-    /* the connections draw themselves the first time the section is reached */
-    if ('IntersectionObserver' in window && !reduceMotion.matches) {
-      var drawn = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          orbit.classList.add('is-drawn');
-          drawn.disconnect();
-        });
-      }, { threshold: 0.3 });
-      drawn.observe(orbit);
-    } else {
-      orbit.classList.add('is-drawn');
-    }
-
-    document.addEventListener('emed:langchange', function () {
-      capTitle.setAttribute('data-i18n', 'cat.' + current);
-      capText.setAttribute('data-i18n', 'eco.' + current + 'Cap');
-    });
-  }
-
   /* =========================================== discover — the living field ==
      The featured "doctor" tile carries a small care field: four doctors drift
      along a slow ellipse, five ecosystem glyphs drift along a much slower one
@@ -997,7 +915,6 @@
     initHeader();
     initDrawer();
     initSearch();
-    initEcosystem();
     initCareField();
     initSpotlight();
     initAppShowcase();

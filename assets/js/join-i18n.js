@@ -97,7 +97,7 @@
     'j.f.city': 'المدينة أو المنطقة',
     'j.f.street': 'الشارع أو وصف الموقع',
 
-    'j.p.phone': 'رقم الهاتف',
+    'j.p.phone': '5XXXXXXXX',
     'j.p.email': 'name@example.com',
     'j.p.clinicName': 'عيادة الدكتور محمد الحسيني',
     'j.p.centerName': 'مركز الياسمين الطبي',
@@ -323,7 +323,7 @@
     'j.f.city': 'City or area',
     'j.f.street': 'Street or location description',
 
-    'j.p.phone': 'Phone number',
+    'j.p.phone': '5XXXXXXXX',
     'j.p.email': 'name@example.com',
     'j.p.clinicName': 'Dr Mohammed Al-Husseini Clinic',
     'j.p.centerName': 'Al-Yasmin Medical Centre',

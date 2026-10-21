@@ -118,7 +118,6 @@
     /* ---- capabilities --------------------------------------------------- */
     'cap.eyebrow': 'للأفراد والعائلات',
     'cap.title': 'ما الذي يمكنك فعله عبر eMED',
-    'cap.lead': 'قدرات مدعومة اليوم في موقع eMED وتطبيقه — لا وعود مؤجّلة.',
     'cap.j1': 'ابحث',
     'cap.j2': 'تعرّف',
     'cap.j3': 'احجز عبر التطبيق',
@@ -470,7 +469,6 @@
 
     'cap.eyebrow': 'For individuals and families',
     'cap.title': 'What you can do with eMED',
-    'cap.lead': 'Capabilities the eMED site and app support today — no deferred promises.',
     'cap.j1': 'Search',
     'cap.j2': 'Review',
     'cap.j3': 'Book in the app',
